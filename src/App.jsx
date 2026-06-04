@@ -207,6 +207,7 @@ console.log('SUPABASE DATA', data);
       }
 
       setForm(initialAnimal);
+      setEditingId(null);
       await loadAnimals();
       setMessage('Tier gespeichert.');
     } catch (error) {
