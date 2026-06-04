@@ -132,10 +132,11 @@ export default function App() {
     setLoading(true);
 
     const { data, error } = await supabase
-      .from('animals')
-      .select('*')
-      .order('created_at', { ascending: false });
+  .from('animals')
+  .select('*')
+  .order('created_at', { ascending: false });
 
+console.log('SUPABASE DATA', data);
     if (error) {
       setMessage(`Laden fehlgeschlagen: ${error.message}`);
       setLoading(false);
