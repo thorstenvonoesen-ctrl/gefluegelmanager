@@ -226,6 +226,7 @@ console.log('SUPABASE DATA', data);
     try {
       const imageUrls = await uploadPhotos(form.photos);
       const animalRow = toAnimalRow(form, imageUrls);
+     animalRow.owner_id = user.id;
 
       const { error } = await supabase
         if (editingId) {
