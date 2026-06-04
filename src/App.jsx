@@ -280,10 +280,14 @@ if (!user) {
       />
 
       <button onClick={handleAuth}>
-        {authMode === 'login' ? 'Einloggen' : 'Registrieren'}
-      </button> 
-  );
+  {authMode === 'login' ? 'Einloggen' : 'Registrieren'}
+</button>
 
+</article>
+</main>
+</div>
+);
+}
 return (
     <div className="appShell">
       <aside className="sidebar">
@@ -552,4 +556,3 @@ return (
       </main>
     </div>
   );
-}
