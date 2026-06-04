@@ -260,7 +260,28 @@ console.log('SUPABASE DATA', data);
 
 if (!user) {
   return (
-   
+  <div className="appShell">
+  <main className="main">
+    <article className="card">
+      <h2>Login</h2>
+
+      <input
+        type="email"
+        placeholder="E-Mail"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Passwort"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button onClick={handleAuth}>
+        {authMode === 'login' ? 'Einloggen' : 'Registrieren'}
+      </button> 
   );
 }
 
