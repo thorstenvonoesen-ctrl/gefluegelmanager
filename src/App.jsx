@@ -108,6 +108,7 @@ async function resizeImageFile(file) {
 export default function App() {
   const [animals, setAnimals] = useState([]);
   const [form, setForm] = useState(initialAnimal);
+  const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
