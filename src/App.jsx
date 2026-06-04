@@ -111,7 +111,10 @@ export default function App() {
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
-
+  const [user, setUser] = useState(null);
+  const [authMode, setAuthMode] = useState('login');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const animalCount = animals.length;
 
   const activeCount = useMemo(() => {
@@ -147,6 +150,44 @@ console.log('SUPABASE DATA', data);
     setAnimals((data || []).map(fromAnimalRow));
     setLoading(false);
   }
+  async function handleAuth(e) {
+  e.preventDefault();
+
+  const result =
+    authMode === 'login'
+      ? await supabase.auth.signInWithPassword({ email, password })
+      : await supabase.auth.signUp({ email, password });
+
+  if (result.error) {
+    setMessage(result.error.message);
+    return;
+  }
+
+  setUser(result.data.user);
+ }
+
+ async function handleForgotPassword() {
+  if (!email) {
+    setMessage('Bitte E-Mail eingeben.');
+    return;
+  }
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin
+  });
+
+  if (error) {
+    setMessage(error.message);
+    return;
+  }
+
+  setMessage('Passwort-Link versendet.');
+ }
+
+ async function handleLogout() {
+  await supabase.auth.signOut();
+  setUser(null);
+ }
 
   async function uploadPhotos(files) {
     const selectedFiles = Array.from(files || []).slice(0, 4);
@@ -215,9 +256,15 @@ console.log('SUPABASE DATA', data);
     }
 
     setLoading(false);
-  }
+}
 
+if (!user) {
   return (
+    ...
+  );
+}
+
+return (
     <div className="appShell">
       <aside className="sidebar">
         <div className="brand">🐔 <strong>GeflügelManager</strong></div>
