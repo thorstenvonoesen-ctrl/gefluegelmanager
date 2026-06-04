@@ -260,7 +260,7 @@ console.log('SUPABASE DATA', data);
 
 if (!user) {
   return (
-    ...
+   
   );
 }
 
