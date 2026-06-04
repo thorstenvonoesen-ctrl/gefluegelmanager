@@ -283,7 +283,6 @@ if (!user) {
         {authMode === 'login' ? 'Einloggen' : 'Registrieren'}
       </button> 
   );
-}
 
 return (
     <div className="appShell">
