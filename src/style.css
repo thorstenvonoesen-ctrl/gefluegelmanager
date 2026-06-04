@@ -194,3 +194,45 @@ body {
   place-items: center;
   font-size: 22px;
 }
+.authCard {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 38px;
+  border-radius: 30px;
+  background: white;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.authCard h2 {
+  font-size: 38px;
+  margin-bottom: 24px;
+}
+
+.authCard input {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 15px 16px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.authCard button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.authCard button:first-of-type {
+  background: #b93a2e;
+  color: white;
+}
+
+.authCard button:not(:first-of-type) {
+  background: #f2f2f2;
+  color: #111827;
+}
