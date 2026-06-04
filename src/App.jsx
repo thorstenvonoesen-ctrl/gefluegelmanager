@@ -534,7 +534,7 @@ return (
       .from('animals')
       .delete()
       .eq('id', animal.id);
-
+  
     if (error) {
       alert(error.message);
       return;
@@ -556,3 +556,4 @@ return (
       </main>
     </div>
   );
+}
