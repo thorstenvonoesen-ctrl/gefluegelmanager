@@ -1,31 +1,210 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { supabase } from './supabase.js';
 
 const initialAnimal = {
   ringNr: '',
-  tierart: 'Huhn',
+  art: 'Huhn',
   rasse: '',
   farbschlag: '',
   geschlecht: 'unbekannt',
-  jahr: String(new Date().getFullYear()),
+  geburtsjahr: String(new Date().getFullYear()),
   status: 'aktiv',
-  impfstatus: 'offen',
+  zuchtstamm: '',
+  vaterRingNr: '',
+  mutterRingNr: '',
   zugangVon: '',
   abgangNach: '',
-  notizen: ''
+  notizen: '',
+  photos: []
 };
+
+function toAnimalRow(form, imageUrls = []) {
+  return {
+    ring_nr: form.ringNr,
+    art: form.art,
+    rasse: form.rasse,
+    farbschlag: form.farbschlag,
+    geschlecht: form.geschlecht,
+    geburtsjahr: form.geburtsjahr,
+    status: form.status,
+    zuchtstamm: form.zuchtstamm,
+    vater_ring_nr: form.vaterRingNr,
+    mutter_ring_nr: form.mutterRingNr,
+    zugang_von: form.zugangVon,
+    abgang_nach: form.abgangNach,
+    bild_url: imageUrls[0] || null,
+    bild_url_2: imageUrls[1] || null,
+    bild_url_3: imageUrls[2] || null,
+    bild_url_4: imageUrls[3] || null,
+    notizen: form.notizen
+  };
+}
+
+function fromAnimalRow(row) {
+  return {
+    id: row.id,
+    ringNr: row.ring_nr || '',
+    art: row.art || 'Huhn',
+    rasse: row.rasse || '',
+    farbschlag: row.farbschlag || '',
+    geschlecht: row.geschlecht || 'unbekannt',
+    geburtsjahr: row.geburtsjahr || '',
+    status: row.status || 'aktiv',
+    zuchtstamm: row.zuchtstamm || '',
+    vaterRingNr: row.vater_ring_nr || '',
+    mutterRingNr: row.mutter_ring_nr || '',
+    zugangVon: row.zugang_von || '',
+    abgangNach: row.abgang_nach || '',
+    notizen: row.notizen || '',
+    photos: [
+      row.bild_url,
+      row.bild_url_2,
+      row.bild_url_3,
+      row.bild_url_4
+    ].filter(Boolean)
+  };
+}
+
+async function resizeImageFile(file) {
+  const maxSize = 1200;
+  const quality = 0.75;
+
+  if (!file.type.startsWith('image/')) {
+    return file;
+  }
+
+  const imageUrl = URL.createObjectURL(file);
+  const image = new Image();
+
+  await new Promise((resolve, reject) => {
+    image.onload = resolve;
+    image.onerror = reject;
+    image.src = imageUrl;
+  });
+
+  const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+  const width = Math.round(image.width * scale);
+  const height = Math.round(image.height * scale);
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+
+  const context = canvas.getContext('2d');
+  context.drawImage(image, 0, 0, width, height);
+
+  URL.revokeObjectURL(imageUrl);
+
+  const blob = await new Promise(resolve => {
+    canvas.toBlob(resolve, 'image/jpeg', quality);
+  });
+
+  if (!blob) {
+    return file;
+  }
+
+  return new File(
+    [blob],
+    file.name.replace(/\.[^.]+$/, '.jpg'),
+    { type: 'image/jpeg' }
+  );
+}
 
 export default function App() {
   const [animals, setAnimals] = useState([]);
   const [form, setForm] = useState(initialAnimal);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const animalCount = animals.length;
+
+  const activeCount = useMemo(() => {
+    return animals.filter(animal => animal.status === 'aktiv').length;
+  }, [animals]);
+
+  useEffect(() => {
+    loadAnimals();
+  }, []);
 
   function updateForm(field, value) {
-    setForm({ ...form, [field]: value });
+    setForm(current => ({
+      ...current,
+      [field]: value
+    }));
   }
 
-  function saveAnimal(e) {
-    e.preventDefault();
-    setAnimals([{ ...form, id: Date.now() }, ...animals]);
-    setForm(initialAnimal);
+  async function loadAnimals() {
+    setLoading(true);
+
+    const { data, error } = await supabase
+      .from('animals')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      setMessage(`Laden fehlgeschlagen: ${error.message}`);
+      setLoading(false);
+      return;
+    }
+
+    setAnimals((data || []).map(fromAnimalRow));
+    setLoading(false);
+  }
+
+  async function uploadPhotos(files) {
+    const selectedFiles = Array.from(files || []).slice(0, 4);
+    const urls = [];
+
+    for (let index = 0; index < selectedFiles.length; index += 1) {
+      const resizedFile = await resizeImageFile(selectedFiles[index]);
+      const fileName = `${Date.now()}-${index}-${resizedFile.name}`;
+
+      const { error } = await supabase.storage
+        .from('animal-images')
+        .upload(fileName, resizedFile, {
+          upsert: true,
+          contentType: resizedFile.type
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      const { data } = supabase.storage
+        .from('animal-images')
+        .getPublicUrl(fileName);
+
+      urls.push(data.publicUrl);
+    }
+
+    return urls;
+  }
+
+  async function saveAnimal(event) {
+    event.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    try {
+      const imageUrls = await uploadPhotos(form.photos);
+      const animalRow = toAnimalRow(form, imageUrls);
+
+      const { error } = await supabase
+        .from('animals')
+        .insert(animalRow);
+
+      if (error) {
+        throw error;
+      }
+
+      setForm(initialAnimal);
+      await loadAnimals();
+      setMessage('Tier gespeichert.');
+    } catch (error) {
+      setMessage(`Speichern fehlgeschlagen: ${error.message}`);
+    }
+
+    setLoading(false);
   }
 
   return (
@@ -48,7 +227,24 @@ export default function App() {
             <h1>GeflügelManager</h1>
             <p>Digitale Tier- und Zuchtverwaltung</p>
           </div>
+
+          <div className="stats">
+            <div>
+              <strong>{animalCount}</strong>
+              <span>Tiere</span>
+            </div>
+            <div>
+              <strong>{activeCount}</strong>
+              <span>aktiv</span>
+            </div>
+          </div>
         </section>
+
+        {message && (
+          <div className="message">
+            {message}
+          </div>
+        )}
 
         <section className="grid">
           <article className="card">
@@ -57,12 +253,18 @@ export default function App() {
             <form className="animalForm" onSubmit={saveAnimal}>
               <label>
                 Ringnummer
-                <input value={form.ringNr} onChange={e => updateForm('ringNr', e.target.value)} />
+                <input
+                  value={form.ringNr}
+                  onChange={event => updateForm('ringNr', event.target.value)}
+                />
               </label>
 
               <label>
                 Tierart
-                <select value={form.tierart} onChange={e => updateForm('tierart', e.target.value)}>
+                <select
+                  value={form.art}
+                  onChange={event => updateForm('art', event.target.value)}
+                >
                   <option>Huhn</option>
                   <option>Taube</option>
                   <option>Ente</option>
@@ -74,7 +276,10 @@ export default function App() {
 
               <label>
                 Rasse
-                <select value={form.rasse} onChange={e => updateForm('rasse', e.target.value)}>
+                <select
+                  value={form.rasse}
+                  onChange={event => updateForm('rasse', event.target.value)}
+                >
                   <option value="">Bitte wählen</option>
                   <option>Ayam Cemani</option>
                   <option>Serama</option>
@@ -87,7 +292,10 @@ export default function App() {
 
               <label>
                 Farbschlag
-                <select value={form.farbschlag} onChange={e => updateForm('farbschlag', e.target.value)}>
+                <select
+                  value={form.farbschlag}
+                  onChange={event => updateForm('farbschlag', event.target.value)}
+                >
                   <option value="">Bitte wählen</option>
                   <option>schwarz</option>
                   <option>weiß</option>
@@ -100,7 +308,10 @@ export default function App() {
 
               <label>
                 Geschlecht
-                <select value={form.geschlecht} onChange={e => updateForm('geschlecht', e.target.value)}>
+                <select
+                  value={form.geschlecht}
+                  onChange={event => updateForm('geschlecht', event.target.value)}
+                >
                   <option>unbekannt</option>
                   <option>Hahn</option>
                   <option>Henne</option>
@@ -109,12 +320,25 @@ export default function App() {
 
               <label>
                 Jahr
-                <input value={form.jahr} onChange={e => updateForm('jahr', e.target.value)} />
+                <select
+                  value={form.geburtsjahr}
+                  onChange={event => updateForm('geburtsjahr', event.target.value)}
+                >
+                  {Array.from({ length: 16 }, (_, index) => {
+                    const year = String(new Date().getFullYear() - index);
+                    return (
+                      <option key={year}>{year}</option>
+                    );
+                  })}
+                </select>
               </label>
 
               <label>
                 Status
-                <select value={form.status} onChange={e => updateForm('status', e.target.value)}>
+                <select
+                  value={form.status}
+                  onChange={event => updateForm('status', event.target.value)}
+                >
                   <option>aktiv</option>
                   <option>verkauft</option>
                   <option>abgegeben</option>
@@ -123,34 +347,66 @@ export default function App() {
               </label>
 
               <label>
-                Impfstatus
-                <select value={form.impfstatus} onChange={e => updateForm('impfstatus', e.target.value)}>
-                  <option>offen</option>
-                  <option>erledigt</option>
-                </select>
+                Zuchtstamm
+                <input
+                  value={form.zuchtstamm}
+                  onChange={event => updateForm('zuchtstamm', event.target.value)}
+                />
+              </label>
+
+              <label>
+                Vater Ringnr.
+                <input
+                  value={form.vaterRingNr}
+                  onChange={event => updateForm('vaterRingNr', event.target.value)}
+                />
+              </label>
+
+              <label>
+                Mutter Ringnr.
+                <input
+                  value={form.mutterRingNr}
+                  onChange={event => updateForm('mutterRingNr', event.target.value)}
+                />
               </label>
 
               <label>
                 Zugang: von wem / woher
-                <input value={form.zugangVon} onChange={e => updateForm('zugangVon', e.target.value)} />
+                <input
+                  value={form.zugangVon}
+                  onChange={event => updateForm('zugangVon', event.target.value)}
+                />
               </label>
 
               <label>
                 Abgang: an wen / wohin
-                <input value={form.abgangNach} onChange={e => updateForm('abgangNach', e.target.value)} />
+                <input
+                  value={form.abgangNach}
+                  onChange={event => updateForm('abgangNach', event.target.value)}
+                />
               </label>
 
-              <label>
+              <label className="full">
                 Bis zu 4 Fotos
-                <input type="file" accept="image/*" multiple />
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={event => updateForm('photos', event.target.files)}
+                />
               </label>
 
               <label className="full">
                 Notizen
-                <textarea value={form.notizen} onChange={e => updateForm('notizen', e.target.value)} />
+                <textarea
+                  value={form.notizen}
+                  onChange={event => updateForm('notizen', event.target.value)}
+                />
               </label>
 
-              <button className="primary" type="submit">Tier speichern</button>
+              <button className="primary" type="submit" disabled={loading}>
+                {loading ? 'Speichert ...' : 'Tier speichern'}
+              </button>
             </form>
           </article>
 
@@ -163,9 +419,23 @@ export default function App() {
               <div className="animalList">
                 {animals.map(animal => (
                   <div className="animalRow" key={animal.id}>
-                    <strong>{animal.ringNr || 'ohne Ringnummer'}</strong>
-                    <span>{animal.tierart} · {animal.rasse || 'keine Rasse'} · {animal.geschlecht}</span>
-                    <small>Zugang: {animal.zugangVon || '—'} · Abgang: {animal.abgangNach || '—'}</small>
+                    <div className="photoStrip">
+                      {animal.photos.length ? (
+                        animal.photos.map(photo => (
+                          <img key={photo} src={photo} alt="" />
+                        ))
+                      ) : (
+                        <div className="photoPlaceholder">🐔</div>
+                      )}
+                    </div>
+
+                    <div>
+                      <strong>{animal.ringNr || 'ohne Ringnummer'}</strong>
+                      <span>{animal.art} · {animal.rasse || 'keine Rasse'} · {animal.geschlecht}</span>
+                      <small>
+                        Status: {animal.status} · Zugang: {animal.zugangVon || '—'} · Abgang: {animal.abgangNach || '—'}
+                      </small>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -176,3 +446,5 @@ export default function App() {
     </div>
   );
 }
+
+Danach committen.
