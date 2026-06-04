@@ -138,7 +138,8 @@ export default function App() {
     const { data, error } = await supabase
   .from('animals')
   .select('*')
-  .order('created_at', { ascending: false });
+.eq('owner_id', user.id)
+.order('created_at', { ascending: false });
 
 console.log('SUPABASE DATA', data);
     if (error) {
