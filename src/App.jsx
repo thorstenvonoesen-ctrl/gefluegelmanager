@@ -187,8 +187,20 @@ console.log('SUPABASE DATA', data);
       const animalRow = toAnimalRow(form, imageUrls);
 
       const { error } = await supabase
-        .from('animals')
-        .insert(animalRow);
+        if (editingId) {
+  const { error } = await supabase
+    .from('animals')
+    .update(animalRow)
+    .eq('id', editingId);
+
+  if (error) throw error;
+} else {
+  const { error } = await supabase
+    .from('animals')
+    .insert(animalRow);
+
+  if (error) throw error;
+}
 
       if (error) {
         throw error;
