@@ -1,74 +1,156 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-  font-family:system-ui,sans-serif;
-  background:#f4f5f7;
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
 }
 
-.appShell{
-  display:flex;
-  min-height:100vh;
+.appShell {
+  display: flex;
+  min-height: 100vh;
 }
 
-.sidebar{
-  width:260px;
-  background:#fff;
-  border-right:1px solid #e5e7eb;
-  padding:24px;
+.sidebar {
+  width: 260px;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 24px;
 }
 
-.brand{
-  font-size:22px;
-  margin-bottom:30px;
+.brand {
+  font-size: 22px;
+  margin-bottom: 32px;
 }
 
-.sidebar nav{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.sidebar button{
-  border:none;
-  padding:14px;
-  border-radius:12px;
-  cursor:pointer;
-  text-align:left;
+.sidebar button {
+  border: 0;
+  background: #f3f4f6;
+  padding: 14px 16px;
+  border-radius: 14px;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.sidebar .active{
-  background:#c92a1f;
-  color:white;
+.sidebar .active {
+  background: #c92a1f;
+  color: white;
 }
 
-.main{
-  flex:1;
-  padding:32px;
+.main {
+  flex: 1;
+  padding: 32px;
 }
 
-.hero{
-  background:white;
-  border-radius:20px;
-  padding:24px;
-  margin-bottom:24px;
+.hero {
+  background: white;
+  border-radius: 28px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
 }
 
-.hero p{
-  color:#c92a1f;
+.hero h1 {
+  margin: 0;
+  font-size: 34px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
+.hero p {
+  color: #c92a1f;
 }
 
-.card{
-  background:white;
-  border-radius:20px;
-  padding:24px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 28px;
+  padding: 28px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.animalForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.animalForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.animalForm input,
+.animalForm select,
+.animalForm textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+}
+
+.animalForm textarea {
+  min-height: 120px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.primary {
+  grid-column: 1 / -1;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px;
+  background: #c92a1f;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.animalList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.animalRow {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+@media (max-width: 900px) {
+  .appShell {
+    display: block;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .animalForm {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: auto;
+  }
 }
