@@ -287,14 +287,6 @@ if (!user) {
   onClick={() => setAuthMode(authMode === 'login' ? 'signup' : 'login')}
 >
   {authMode === 'login' ? 'Konto erstellen' : 'Zum Login'}
-<button onClick={handleAuth}>
-  {authMode === 'login' ? 'Einloggen' : 'Registrieren'}
-</button>
-
-<button
-  onClick={() => setAuthMode(authMode === 'login' ? 'signup' : 'login')}
->
-  {authMode === 'login' ? 'Konto erstellen' : 'Zum Login'}
 </button>
 
 <button onClick={handleForgotPassword}>
