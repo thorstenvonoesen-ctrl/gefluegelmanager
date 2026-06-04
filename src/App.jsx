@@ -283,6 +283,12 @@ if (!user) {
   {authMode === 'login' ? 'Einloggen' : 'Registrieren'}
 </button>
 
+<button
+  onClick={() => setAuthMode(authMode === 'login' ? 'signup' : 'login')}
+>
+  {authMode === 'login' ? 'Konto erstellen' : 'Zum Login'}
+</button>
+
 </article>
 </main>
 </div>
