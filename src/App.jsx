@@ -262,7 +262,7 @@ if (!user) {
   return (
   <div className="appShell">
   <main className="main">
-    <article className="card">
+    <article className="authCard">
       <h2>Login</h2>
 
       <input
