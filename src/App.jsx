@@ -455,6 +455,26 @@ console.log('SUPABASE DATA', data);
   Bearbeiten
 </button>
 
+<button
+  onClick={async () => {
+    if (!confirm('Tier wirklich löschen?')) return;
+
+    const { error } = await supabase
+      .from('animals')
+      .delete()
+      .eq('id', animal.id);
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    await loadAnimals();
+  }}
+>
+  Löschen
+</button>
+
 </div>
                   </div>
                 ))}
