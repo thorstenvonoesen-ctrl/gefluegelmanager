@@ -443,9 +443,19 @@ console.log('SUPABASE DATA', data);
                       <strong>{animal.ringNr || 'ohne Ringnummer'}</strong>
                       <span>{animal.art} · {animal.rasse || 'keine Rasse'} · {animal.geschlecht}</span>
                       <small>
-                        Status: {animal.status} · Zugang: {animal.zugangVon || '—'} · Abgang: {animal.abgangNach || '—'}
-                      </small>
-                    </div>
+  Status: {animal.status} ...
+</small>
+
+<button
+  onClick={() => {
+    setForm(animal);
+    setEditingId(animal.id);
+  }}
+>
+  Bearbeiten
+</button>
+
+</div>
                   </div>
                 ))}
               </div>
