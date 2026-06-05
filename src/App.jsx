@@ -236,7 +236,7 @@ console.log('SUPABASE DATA', data);
   const animalRow = toAnimalRow(form, imageUrls);
 
   const { data: sessionData } = await supabase.auth.getSession();
-
+console.log("USER ID:", sessionData.session.user.id);
   animalRow.owner_id = sessionData.session.user.id;
 
     if (editingId) {
