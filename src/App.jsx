@@ -531,7 +531,11 @@ return (
 </select>
 
 <label>Anzahl Eier</label>
-
+<input
+  type="number"
+  placeholder="Anzahl eingeben"
+  style={{ width: '100%' }}
+/>
   </article>
   </section>
 )}
