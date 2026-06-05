@@ -461,3 +461,32 @@ body {
 .sidebar nav button.active {
   background: linear-gradient(135deg, #4f8f45, #86c86f);
 }
+.card input,
+.card select {
+  width: 100%;
+  margin: 8px 0 20px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0f1724;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.card input::placeholder {
+  color: #94a3b8;
+}
+
+.card button {
+  background: linear-gradient(135deg, #4f8f45, #86c86f);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: #5da853;
+}
