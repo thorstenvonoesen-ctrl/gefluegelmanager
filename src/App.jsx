@@ -555,21 +555,9 @@ return (
   style={{ width: '100%' }}
 />
 
-<button
-  onClick={() => {
-    setEggEntries([
-      ...eggEntries,
-      {
-        id: Date.now(),
-        ringNr: selectedAnimal,
-        count: Number(eggCount),
-        date: new Date().toISOString().slice(0, 10)
-      }
-    ]);
-
-    setEggCount('');
-    setSelectedAnimal('');
-  }}
+<button onClick={saveEggEntry}>
+  Eier speichern
+</button>
 >
   Eier speichern
 </button>
