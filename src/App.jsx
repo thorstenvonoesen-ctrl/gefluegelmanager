@@ -227,7 +227,7 @@ async function saveEggEntry(event) {
   }
 
   setEggForm(initialEggEntry);
-  
+  await loadEggEntries();
 }
 async function handleAuth() {
   setMessage('');
