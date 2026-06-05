@@ -528,7 +528,11 @@ return (
   Tier auswählen
 </label>
 
-<select style={{ width: '100%', marginBottom: '16px' }}>
+<select
+  value={selectedAnimal}
+  onChange={(event) => setSelectedAnimal(event.target.value)}
+  style={{ width: '100%', marginBottom: '16px' }}
+>
   <option value="">Tier wählen</option>
 
 {animals.map((animal) => (
