@@ -146,12 +146,12 @@ if (!currentUser) {
   .select('role')
   .eq('id', currentUser.id)
   .single();
-
+console.log("PROFILE:", profileData)
 let query = supabase
   .from('animals')
   .select('*')
   .order('created_at', { ascending: false });
-
+console.log("ROLE:", profileData?.role);
 if (profileData?.role?.trim().toLowerCase() !== 'admin') {
   query = query.eq('owner_id', currentUser.id);
 }
