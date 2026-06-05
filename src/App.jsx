@@ -570,6 +570,30 @@ return (
 >
   Eier speichern
 </button>
+      <h3>Einträge</h3>
+
+{eggEntries.length === 0 ? (
+  <p>Noch keine Eier eingetragen.</p>
+) : (
+  <div>
+    {eggEntries.map((entry) => (
+      <div key={entry.id} style={{ marginBottom: '12px' }}>
+        <strong>{entry.ringNr}</strong> · {entry.count} Eier · {entry.date}
+
+        <button
+          onClick={() =>
+            setEggEntries(
+              eggEntries.filter((item) => item.id !== entry.id)
+            )
+          }
+          style={{ marginLeft: '12px' }}
+        >
+          Löschen
+        </button>
+      </div>
+    ))}
+  </div>
+)}
   </article>
   </section>
 )}
