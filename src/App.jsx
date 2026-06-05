@@ -381,8 +381,7 @@ return (
         <nav>
           <button className="active">Dashboard</button>
        <button onClick={() => alert('Tiere geklickt')}>Tiere</button>
-  Tiere
-</button>
+ 
           <button>Impfungen</button>
           
           <button>Export</button>
