@@ -543,6 +543,7 @@ return (
 </select>
 
 <label>Anzahl Eier</label>
+
 <input
   type="number"
   placeholder="Anzahl eingeben"
@@ -550,6 +551,25 @@ return (
   onChange={(event) => setEggCount(event.target.value)}
   style={{ width: '100%' }}
 />
+
+<button
+  onClick={() => {
+    setEggEntries([
+      ...eggEntries,
+      {
+        id: Date.now(),
+        ringNr: selectedAnimal,
+        count: Number(eggCount),
+        date: new Date().toISOString().slice(0, 10)
+      }
+    ]);
+
+    setEggCount('');
+    setSelectedAnimal('');
+  }}
+>
+  Eier speichern
+</button>
   </article>
   </section>
 )}
