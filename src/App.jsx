@@ -504,7 +504,7 @@ return (
       <article className="dashboardCard">
         <h2>Impfungen</h2>
         <p>Impfungen und Behandlungen erfassen und verwalten.</p>
-        <button>
+        <button onClick={() => setActivePage('impfungen')}>
           Zu den Impfungen →
         </button>
       </article>
