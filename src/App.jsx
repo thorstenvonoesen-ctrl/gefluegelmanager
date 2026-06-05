@@ -323,13 +323,7 @@ return (
 >
   Abmelden
 </button><button
-  onClick={async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-  }}
->
-  Abmelden
-</button>
+  
       </aside>
 
       <main className="main">
