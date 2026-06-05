@@ -326,6 +326,7 @@ return (
           <button className="active">Dashboard</button>
           <button>Tiere</button>
           <button>Impfungen</button>
+          <button>Eierbuch</button>
           <button>Export</button>
           <button>Einstellungen</button>
         </nav>
