@@ -18,6 +18,11 @@ const initialAnimal = {
   photos: []
 };
 
+const initialEggEntry = {
+  date: new Date().toISOString().slice(0, 10),
+  count: '',
+  notes: ''
+};
 function toAnimalRow(form, imageUrls = []) {
   return {
     ring_nr: form.ringNr,
