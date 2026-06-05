@@ -558,9 +558,7 @@ return (
 <button onClick={saveEggEntry}>
   Eier speichern
 </button>
->
-  Eier speichern
-</button>
+
       <h3>Einträge</h3>
 <p>
   Gesamt: <strong>{eggEntries.reduce((sum, entry) => sum + entry.count, 0)}</strong> Eier
