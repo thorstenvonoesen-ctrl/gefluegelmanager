@@ -415,23 +415,92 @@ return (
       </aside>
 
       <main className="main">
-        <section className="hero">
-          <div>
-            <h1>GeflügelManager</h1>
-            <p>Digitale Tier- und Zuchtverwaltung</p>
-          </div>
+        {activePage === 'dashboard' && (
+  <>
+    <section className="dashboardHeader">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Willkommen zurück im GeflügelManager</p>
+      </div>
+    </section>
 
-          <div className="stats">
-            <div>
-              <strong>{animalCount}</strong>
-              <span>Tiere</span>
-            </div>
-            <div>
-              <strong>{activeCount}</strong>
-              <span>aktiv</span>
-            </div>
-          </div>
-        </section>
+    <section className="dashboardStats">
+      <article className="statCard">
+        <div className="statIcon">🐔</div>
+        <div>
+          <span>Gesamtzahl Tiere</span>
+          <strong>{animalCount}</strong>
+          <small>alle registrierten Tiere</small>
+        </div>
+      </article>
+
+      <article className="statCard">
+        <div className="statIcon">🐓</div>
+        <div>
+          <span>Aktive Tiere</span>
+          <strong>{activeCount}</strong>
+          <small>aktuell aktiv</small>
+        </div>
+      </article>
+
+      <article className="statCard">
+        <div className="statIcon">🥚</div>
+        <div>
+          <span>Eier heute</span>
+          <strong>0</strong>
+          <small>frische Eier</small>
+        </div>
+      </article>
+
+      <article className="statCard">
+        <div className="statIcon">📈</div>
+        <div>
+          <span>Eier diese Woche</span>
+          <strong>0</strong>
+          <small>gesamt gesammelt</small>
+        </div>
+      </article>
+    </section>
+
+    <section className="dashboardGrid">
+      <article className="dashboardCard">
+        <h2>Letzte Aktivitäten</h2>
+        <p>Neues Tier hinzugefügt</p>
+        <p>Eierbuch vorbereitet</p>
+        <p>Tierverwaltung aktualisiert</p>
+      </article>
+
+      <article className="dashboardCard">
+        <h2>Eierstatistik</h2>
+        <p>Die Eierstatistik wird später eingebaut.</p>
+      </article>
+
+      <article className="dashboardCard">
+        <h2>Tiere verwalten</h2>
+        <p>Deine Tiere erfassen, anzeigen und verwalten.</p>
+        <button onClick={() => setActivePage('tiere')}>
+          Zu den Tieren →
+        </button>
+      </article>
+
+      <article className="dashboardCard">
+        <h2>Eierbuch</h2>
+        <p>Eier erfassen, Übersicht einsehen und Statistiken.</p>
+        <button>
+          Zum Eierbuch →
+        </button>
+      </article>
+
+      <article className="dashboardCard">
+        <h2>Impfungen</h2>
+        <p>Impfungen und Behandlungen erfassen und verwalten.</p>
+        <button>
+          Zu den Impfungen →
+        </button>
+      </article>
+    </section>
+  </>
+)}
 
         {message && (
           <div className="message">
