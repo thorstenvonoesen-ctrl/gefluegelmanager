@@ -242,3 +242,139 @@ body {
   object-fit: cover;
   border-radius: 16px;
 }
+/* ===== Dashboard ===== */
+
+.dashboardHeader {
+  margin-bottom: 28px;
+}
+
+.dashboardHeader h1 {
+  font-size: 44px;
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+.dashboardHeader p {
+  font-size: 20px;
+  margin: 0;
+  color: #6b7280;
+}
+
+.dashboardStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.statCard,
+.dashboardCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.06);
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.statIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #b91c1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.statCard span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.statCard strong {
+  display: block;
+  color: #111827;
+  font-size: 34px;
+  line-height: 1;
+  margin: 6px 0;
+}
+
+.statCard small {
+  color: #6b7280;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+}
+
+.dashboardCard {
+  min-height: 170px;
+}
+
+.dashboardCard:nth-child(1),
+.dashboardCard:nth-child(2) {
+  grid-column: span 3;
+}
+
+.dashboardCard:nth-child(3),
+.dashboardCard:nth-child(4),
+.dashboardCard:nth-child(5) {
+  grid-column: span 2;
+}
+
+.dashboardCard h2 {
+  margin: 0 0 16px;
+  color: #111827;
+}
+
+.dashboardCard p {
+  color: #374151;
+  line-height: 1.5;
+}
+
+.dashboardCard button {
+  margin-top: 14px;
+  background: #b91c1c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dashboardCard button:hover {
+  background: #991b1b;
+}
+
+@media (max-width: 1100px) {
+  .dashboardStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboardCard:nth-child(1),
+  .dashboardCard:nth-child(2),
+  .dashboardCard:nth-child(3),
+  .dashboardCard:nth-child(4),
+  .dashboardCard:nth-child(5) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboardStats {
+    grid-template-columns: 1fr;
+  }
+}
