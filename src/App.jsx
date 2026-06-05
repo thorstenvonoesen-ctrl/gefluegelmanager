@@ -224,10 +224,7 @@ async function saveEggEntry(event) {
   
 }
 
-  setUser(result.data.user);
- }
-
- async function handleForgotPassword() {
+   async function handleForgotPassword() {
   if (!email) {
     setMessage('Bitte E-Mail eingeben.');
     return;
