@@ -32,7 +32,7 @@ function toAnimalRow(form, imageUrls = []) {
     mutter_ring_nr: form.mutterRingNr,
     zugang_von: form.zugangVon,
     abgang_nach: form.abgangNach,
-    bild_url: imageUrls[0] || null,
+    bild_url_1: imageUrls[0] || null,
     bild_url_2: imageUrls[1] || null,
     bild_url_3: imageUrls[2] || null,
     bild_url_4: imageUrls[3] || null,
