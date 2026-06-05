@@ -388,8 +388,17 @@ return (
   />
 </label>
 
-                 <label>
-                Geschlecht
+<label>
+  Farbschlag
+  <input
+    value={form.farbschlag}
+    onChange={(event) => updateForm('farbschlag', event.target.value)}
+    placeholder="Farbschlag eingeben"
+  />
+</label>
+
+<label>
+  Geschlecht
                 <select
                   value={form.geschlecht}
                   onChange={event => updateForm('geschlecht', event.target.value)}
