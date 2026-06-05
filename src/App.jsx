@@ -216,9 +216,9 @@ async function saveEggEntry(event) {
     .from('egg_entries')
     .insert({
   owner_id: currentUser.id,
-  ring_nr: selectedAnimal,
   date: new Date().toISOString().slice(0, 10),
-  count: Number(eggCount)
+  count: Number(eggCount),
+  notes: selectedAnimal
 });
 
   if (error) {
