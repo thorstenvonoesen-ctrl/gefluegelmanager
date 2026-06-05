@@ -652,6 +652,24 @@ return (
   onChange={(event) => setVaccineName(event.target.value)}
   style={{ width: '100%' }}
 />
+      <button
+  onClick={() => {
+    setVaccinations([
+      ...vaccinations,
+      {
+        id: Date.now(),
+        ringNr: vaccineAnimal,
+        vaccine: vaccineName,
+        date: new Date().toISOString().slice(0, 10)
+      }
+    ])
+
+    setVaccineAnimal('')
+    setVaccineName('')
+  }}
+>
+  Impfung speichern
+</button>
     </article>
   </section>
 )}       
