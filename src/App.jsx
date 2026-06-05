@@ -652,7 +652,8 @@ return (
             )}
 </article>
         </section>
-      </main>
+      )}
+        </main>
     </div>
   );
 }
