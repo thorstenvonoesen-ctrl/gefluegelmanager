@@ -220,29 +220,40 @@ console.log('SUPABASE DATA', data);
   }
 
   async function saveAnimal(event) {
-    event.preventDefault();
-    setLoading(true);
-    setMessage('');
+  event.preventDefault();
+  setLoading(true);
+  setMessage('');
 
-    try {
-  const imageUrls = [];
-  const animalRow = toAnimalRow(form, imageUrls);
-  animalRow.owner_id = user.id;
+  try {
+    const imageUrls = [];
+    const animalRow = toAnimalRow(form, imageUrls);
+    animalRow.owner_id = user.id;
 
+    if (editingId) {
       const { error } = await supabase
-        if (editingId) {
-  const { error } = await supabase
-    .from('animals')
-    .update(animalRow)
-    .eq('id', editingId);
+        .from('animals')
+        .update(animalRow)
+        .eq('id', editingId);
 
-  if (error) throw error;
-} else {
-  const { error } = await supabase
-    .from('animals')
-    .insert(animalRow);
+      if (error) throw error;
+    } else {
+      const { error } = await supabase
+        .from('animals')
+        .insert(animalRow);
 
-  if (error) throw error;
+      if (error) throw error;
+    }
+
+    setForm(initialAnimal);
+    setEditingId(null);
+    await loadAnimals();
+    setMessage('Tier gespeichert.');
+  } catch (error) {
+    console.error(error);
+    setMessage(`Speichern fehlgeschlagen: ${error.message}`);
+  } finally {
+    setLoading(false);
+  }
 }
 
       setForm(initialAnimal);
