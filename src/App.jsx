@@ -216,7 +216,7 @@ console.log('SUPABASE DATA', data);
       }
 
       const { data } = supabase.storage
-        .from('animal-images')
+        .from('animal-photos')
         .getPublicUrl(fileName);
 
       urls.push(data.publicUrl);
