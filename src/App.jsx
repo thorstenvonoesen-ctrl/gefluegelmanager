@@ -205,7 +205,7 @@ console.log('SUPABASE DATA', data);
       const fileName = `${Date.now()}-${index}-${resizedFile.name}`;
 
       const { error } = await supabase.storage
-        .from('animal-images')
+        .from('animal-photos')
         .upload(fileName, resizedFile, {
           upsert: true,
           contentType: resizedFile.type
