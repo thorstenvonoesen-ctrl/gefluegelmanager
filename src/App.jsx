@@ -522,9 +522,11 @@ return (
     <article className="card">
   <h2>Eierbuch</h2>
 
-<label>Tier auswählen</label>
+<label style={{ display: 'block', marginBottom: '8px' }}>
+  Tier auswählen
+</label>
 
-<select>
+<select style={{ width: '100%', marginBottom: '16px' }}>
   <option>Tier wählen</option>
 </select>
 
