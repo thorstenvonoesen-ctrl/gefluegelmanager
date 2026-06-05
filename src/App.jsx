@@ -121,6 +121,7 @@ export default function App() {
   const [message, setMessage] = useState('');
   const [user, setUser] = useState(null);
   const [authMode, setAuthMode] = useState('login');
+  const [activePage, setActivePage] = useState('dashboard');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const animalCount = animals.length;
