@@ -439,7 +439,8 @@ return (
           </div>
         )}
 
-        <section className="grid">
+        {activePage === 'tiere' && (
+<section className="grid">
           <article className="card">
             <h2>Tier erfassen</h2>
 
