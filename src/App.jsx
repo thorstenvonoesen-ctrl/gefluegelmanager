@@ -527,7 +527,13 @@ return (
 </label>
 
 <select style={{ width: '100%', marginBottom: '16px' }}>
-  <option>Tier wählen</option>
+  <option value="">Tier wählen</option>
+
+{animals.map((animal) => (
+  <option key={animal.id} value={animal.ringNr}>
+    {animal.ringNr}
+  </option>
+))}
 </select>
 
 <label>Anzahl Eier</label>
