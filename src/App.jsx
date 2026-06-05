@@ -115,8 +115,8 @@ export default function App() {
   const [form, setForm] = useState(initialAnimal);
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [eggEntries, setEggEntries] = useState([]);
-const [eggForm, setEggForm] = useState(initialEggEntry);
+  
+
   const [message, setMessage] = useState('');
   const [user, setUser] = useState(null);
   const [authMode, setAuthMode] = useState('login');
@@ -220,7 +220,7 @@ async function saveEggEntry(event) {
   }
 
   setEggForm(initialEggEntry);
-  await loadEggEntries();
+  
 }
 
   setUser(result.data.user);
@@ -368,7 +368,7 @@ return (
           <button className="active">Dashboard</button>
           <button>Tiere</button>
           <button>Impfungen</button>
-          <button>Eierbuch</button>
+          
           <button>Export</button>
           <button>Einstellungen</button>
         </nav>
