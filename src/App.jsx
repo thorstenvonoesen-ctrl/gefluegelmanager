@@ -141,11 +141,22 @@ if (!currentUser) {
   setLoading(false);
   return;
 }
-    const { data, error } = await supabase
+ const { data: profileData } = await supabase
+  .from('profiles')
+  .select('role')
+  .eq('id', currentUser.id)
+  .single();
+
+let query = supabase
   .from('animals')
   .select('*')
-.eq('owner_id', currentUser.id)
-.order('created_at', { ascending: false });
+  .order('created_at', { ascending: false });
+
+if (profileData?.role !== 'admin') {
+  query = query.eq('owner_id', currentUser.id);
+}
+
+const { data, error } = await query;
 
 console.log('SUPABASE DATA', data);
     if (error) {
