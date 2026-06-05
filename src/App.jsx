@@ -522,7 +522,13 @@ return (
     <article className="card">
   <h2>Eierbuch</h2>
 
-  <label>Anzahl Eier</label>
+<label>Tier auswählen</label>
+
+<select>
+  <option>Tier wählen</option>
+</select>
+
+<label>Anzahl Eier</label>
 
   <input
     type="number"
