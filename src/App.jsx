@@ -380,14 +380,24 @@ return (
         <div className="brand">🐔 <strong>GeflügelManager</strong></div>
 
         <nav>
-          <button className="active">Dashboard</button>
-       <button>Tiere</button>
- 
-          <button>Impfungen</button>
-          
-          <button>Export</button>
-          <button>Einstellungen</button>
-        </nav>
+  <button
+    className={activePage === 'dashboard' ? 'active' : ''}
+    onClick={() => setActivePage('dashboard')}
+  >
+    Dashboard
+  </button>
+
+  <button
+    className={activePage === 'tiere' ? 'active' : ''}
+    onClick={() => setActivePage('tiere')}
+  >
+    Tiere
+  </button>
+
+  <button>Impfungen</button>
+  <button>Export</button>
+  <button>Einstellungen</button>
+</nav>
         <div style={{ marginBottom: '10px', fontSize: '14px' }}>
   Angemeldet als:<br />
   <strong>{user?.email}</strong>
