@@ -388,10 +388,7 @@ return (
   />
 </label>
 
-              
-              </label>
-
-              <label>
+                 <label>
                 Geschlecht
                 <select
                   value={form.geschlecht}
