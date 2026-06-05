@@ -315,8 +315,9 @@ console.log("USER ID:", sessionData.session.user.id);
   } finally {
     setLoading(false);
   }
- 
-     if (!user) {
+}
+
+if (!user) {
   return (
   <div className="appShell">
   <main className="main">
