@@ -32,7 +32,7 @@ function toAnimalRow(form, imageUrls = []) {
     mutter_ring_nr: form.mutterRingNr,
     zugang_von: form.zugangVon,
     abgang_nach: form.abgangNach,
-    bild_url_1: imageUrls[0] || null,
+    bild_url: imageUrls[0] || null,
     bild_url_2: imageUrls[1] || null,
     bild_url_3: imageUrls[2] || null,
     bild_url_4: imageUrls[3] || null,
@@ -56,7 +56,7 @@ function fromAnimalRow(row) {
     zugangVon: row.zugang_von || '',
     abgangNach: row.abgang_nach || '',
     notizen: row.notizen || '',
-    photos: [row.bild_url_1, row.bild_url_2, row.bild_url_3, row.bild_url_4].filter(Boolean)
+    photos: [row.bild_url, row.bild_url_2, row.bild_url_3, row.bild_url_4].filter(Boolean)
   };
 }
 
