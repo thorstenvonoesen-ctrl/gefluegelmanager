@@ -231,10 +231,13 @@ console.log('SUPABASE DATA', data);
   setMessage('');
 
   try {
-  const imageUrls = []; 
-    const animalRow = toAnimalRow(form, imageUrls);
-const { data: sessionData } = await supabase.auth.getSession();
-animalRow.owner_id = sessionData.session.user.id;
+  const imageUrls = await uploadPhotos(form.photos);
+
+  const animalRow = toAnimalRow(form, imageUrls);
+
+  const { data: sessionData } = await supabase.auth.getSession();
+
+  animalRow.owner_id = sessionData.session.user.id;
 
     if (editingId) {
       const { error } = await supabase
