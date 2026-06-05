@@ -152,7 +152,7 @@ let query = supabase
   .select('*')
   .order('created_at', { ascending: false });
 
-if (profileData?.role !== 'admin') {
+if (profileData?.role?.trim().toLowerCase() !== 'admin') {
   query = query.eq('owner_id', currentUser.id);
 }
 
