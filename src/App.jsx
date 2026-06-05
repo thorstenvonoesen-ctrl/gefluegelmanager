@@ -520,6 +520,14 @@ return (
     </article>
   </section>
 )}
+ {activePage === 'impfungen' && (
+  <section className="grid">
+    <article className="card">
+      <h2>Impfungen</h2>
+      <p>Hier erfassen wir später Impfungen und Behandlungen.</p>
+    </article>
+  </section>
+)}       
         {activePage === 'tiere' && (
 <section className="grid">
           <article className="card">
