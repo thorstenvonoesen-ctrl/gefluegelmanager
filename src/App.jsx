@@ -507,7 +507,14 @@ return (
             {message}
           </div>
         )}
-
+{activePage === 'eierbuch' && (
+  <section className="grid">
+    <article className="card">
+      <h2>Eierbuch</h2>
+      <p>Hier erfassen wir später die Eier.</p>
+    </article>
+  </section>
+)}
         {activePage === 'tiere' && (
 <section className="grid">
           <article className="card">
