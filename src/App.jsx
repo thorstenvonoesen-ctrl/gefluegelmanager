@@ -225,9 +225,9 @@ console.log('SUPABASE DATA', data);
   setMessage('');
 
   try {
-    const imageUrls = [];
     const animalRow = toAnimalRow(form, imageUrls);
-    animalRow.owner_id = user.id;
+const { data: sessionData } = await supabase.auth.getSession();
+animalRow.owner_id = sessionData.session.user.id;
 
     if (editingId) {
       const { error } = await supabase
