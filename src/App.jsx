@@ -245,10 +245,6 @@ console.log('SUPABASE DATA', data);
   if (error) throw error;
 }
 
-      if (error) {
-        throw error;
-      }
-
       setForm(initialAnimal);
       setEditingId(null);
       await loadAnimals();
