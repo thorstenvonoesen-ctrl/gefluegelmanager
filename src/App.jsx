@@ -215,11 +215,11 @@ async function saveEggEntry(event) {
   const { error } = await supabase
     .from('egg_entries')
     .insert({
-      owner_id: currentUser.id,
-      date: eggForm.date,
-      count: Number(eggForm.count),
-      notes: eggForm.notes
-    });
+  owner_id: currentUser.id,
+  ring_nr: selectedAnimal,
+  date: new Date().toISOString().slice(0, 10),
+  count: Number(eggCount)
+});
 
   if (error) {
     setMessage(`Eier speichern fehlgeschlagen: ${error.message}`);
