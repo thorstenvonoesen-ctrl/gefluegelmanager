@@ -380,7 +380,9 @@ return (
 
         <nav>
           <button className="active">Dashboard</button>
-          <button>Tiere</button>
+          button onClick={() => alert('Tiere geklickt')}>
+  Tiere
+</button>
           <button>Impfungen</button>
           
           <button>Export</button>
