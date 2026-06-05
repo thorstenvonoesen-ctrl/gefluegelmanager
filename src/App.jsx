@@ -329,15 +329,16 @@ return (
           <button>Export</button>
           <button>Einstellungen</button>
         </nav>
+        <div style={{ marginBottom: '10px', fontSize: '14px' }}>
+  Angemeldet als:<br />
+  <strong>{user?.email}</strong>
+</div>
         <button
   onClick={async () => {
     await supabase.auth.signOut();
     setUser(null);
   }}
-<div style={{ marginBottom: '10px', fontSize: '14px' }}>
-  Angemeldet als:<br />
-  <strong>{user?.email}</strong>
-</div>
+
 >
   Abmelden
 </button>
