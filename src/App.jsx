@@ -177,18 +177,51 @@ console.log('SUPABASE DATA', data);
     setAnimals((data || []).map(fromAnimalRow));
     setLoading(false);
   }
-  async function handleAuth(e) {
-  e.preventDefault();
+  async function loadEggEntries() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
 
-  const result =
-    authMode === 'login'
-      ? await supabase.auth.signInWithPassword({ email, password })
-      : await supabase.auth.signUp({ email, password });
+  if (!currentUser) return;
 
-  if (result.error) {
-    setMessage(result.error.message);
+  const { data, error } = await supabase
+    .from('egg_entries')
+    .select('*')
+    .eq('owner_id', currentUser.id)
+    .order('date', { ascending: false });
+
+  if (error) {
+    setMessage(`Eierbuch laden fehlgeschlagen: ${error.message}`);
     return;
   }
+
+  setEggEntries(data || []);
+}
+
+async function saveEggEntry(event) {
+  event.preventDefault();
+
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
+
+  if (!currentUser) return;
+
+  const { error } = await supabase
+    .from('egg_entries')
+    .insert({
+      owner_id: currentUser.id,
+      date: eggForm.date,
+      count: Number(eggForm.count),
+      notes: eggForm.notes
+    });
+
+  if (error) {
+    setMessage(`Eier speichern fehlgeschlagen: ${error.message}`);
+    return;
+  }
+
+  setEggForm(initialEggEntry);
+  await loadEggEntries();
+}
 
   setUser(result.data.user);
  }
