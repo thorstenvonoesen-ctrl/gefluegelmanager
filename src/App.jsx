@@ -578,7 +578,7 @@ return (
   <p>Noch keine Eier eingetragen.</p>
 ) : (
   <div style={{ marginTop: '20px' }}>
-    {eggEntries.map((entry) => (
+    {[...eggEntries].reverse().map((entry) => (
       <div
         key={entry.id}
         style={{
