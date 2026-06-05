@@ -670,6 +670,48 @@ return (
 >
   Impfung speichern
 </button>
+      <h3>Einträge</h3>
+
+{vaccinations.length === 0 ? (
+  <p>Noch keine Impfungen eingetragen.</p>
+) : (
+  <div style={{ marginTop: '20px' }}>
+    {[...vaccinations].reverse().map((entry) => (
+      <div
+        key={entry.id}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '12px',
+          marginBottom: '10px',
+          background: '#18233f',
+          borderRadius: '12px'
+        }}
+      >
+        <div>
+          <strong>{entry.ringNr}</strong>
+          <br />
+          {entry.vaccine}
+          <br />
+          <small>
+            {new Date(entry.date).toLocaleDateString('de-DE')}
+          </small>
+        </div>
+
+        <button
+          onClick={() =>
+            setVaccinations(
+              vaccinations.filter((item) => item.id !== entry.id)
+            )
+          }
+        >
+          Löschen
+        </button>
+      </div>
+    ))}
+  </div>
+)}
     </article>
   </section>
 )}       
