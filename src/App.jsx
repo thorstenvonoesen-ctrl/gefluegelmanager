@@ -380,35 +380,15 @@ return (
               </label>
 
               <label>
-                Rasse
-                <select
-                  value={form.rasse}
-                  onChange={event => updateForm('rasse', event.target.value)}
-                >
-                  <option value="">Bitte wählen</option>
-                  <option>Ayam Cemani</option>
-                  <option>Serama</option>
-                  <option>Brahma</option>
-                  <option>Zwerg-Wyandotten</option>
-                  <option>Seidenhuhn</option>
-                  <option>Sonstige</option>
-                </select>
-              </label>
+  Rasse
+  <input
+    value={form.rasse}
+    onChange={(event) => updateForm('rasse', event.target.value)}
+    placeholder="Rasse eingeben"
+  />
+</label>
 
-              <label>
-                Farbschlag
-                <select
-                  value={form.farbschlag}
-                  onChange={event => updateForm('farbschlag', event.target.value)}
-                >
-                  <option value="">Bitte wählen</option>
-                  <option>schwarz</option>
-                  <option>weiß</option>
-                  <option>wildfarbig</option>
-                  <option>goldhalsig</option>
-                  <option>silberhalsig</option>
-                  <option>sonstige</option>
-                </select>
+              
               </label>
 
               <label>
