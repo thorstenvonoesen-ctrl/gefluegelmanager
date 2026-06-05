@@ -624,7 +624,34 @@ return (
   <section className="grid">
     <article className="card">
       <h2>Impfungen</h2>
-      <p>Hier erfassen wir später Impfungen und Behandlungen.</p>
+
+<label style={{ display: 'block', marginBottom: '8px' }}>
+  Tier auswählen
+</label>
+
+<select
+  value={vaccineAnimal}
+  onChange={(event) => setVaccineAnimal(event.target.value)}
+  style={{ width: '100%', marginBottom: '16px' }}
+>
+  <option value="">Tier wählen</option>
+
+  {animals.map((animal) => (
+    <option key={animal.id} value={animal.ringNr}>
+      {animal.ringNr}
+    </option>
+  ))}
+</select>
+
+<label>Impfung / Behandlung</label>
+
+<input
+  type="text"
+  placeholder="z. B. Newcastle, Milbenbehandlung"
+  value={vaccineName}
+  onChange={(event) => setVaccineName(event.target.value)}
+  style={{ width: '100%' }}
+/>
     </article>
   </section>
 )}       
