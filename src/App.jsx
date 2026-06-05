@@ -596,7 +596,9 @@ return (
           <br />
           {entry.count} Eier
           <br />
-          <small>{entry.date}</small>
+          <small>
+  {new Date(entry.date).toLocaleDateString('de-DE')}
+</small>
         </div>
 
         <button
