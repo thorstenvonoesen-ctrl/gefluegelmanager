@@ -127,7 +127,9 @@ const [eggForm, setEggForm] = useState(initialEggEntry);
   const activeCount = useMemo(() => {
     return animals.filter(animal => animal.status === 'aktiv').length;
   }, [animals]);
-
+const eggTotal = useMemo(() => {
+  return eggEntries.reduce((sum, entry) => sum + Number(entry.count || 0), 0);
+}, [eggEntries]);
   useEffect(() => {
     loadAnimals();
   }, []);
