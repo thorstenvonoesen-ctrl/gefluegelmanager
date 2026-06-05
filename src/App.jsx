@@ -575,10 +575,27 @@ return (
 {eggEntries.length === 0 ? (
   <p>Noch keine Eier eingetragen.</p>
 ) : (
-  <div>
+  <div style={{ marginTop: '20px' }}>
     {eggEntries.map((entry) => (
-      <div key={entry.id} style={{ marginBottom: '12px' }}>
-        <strong>{entry.ringNr}</strong> · {entry.count} Eier · {entry.date}
+      <div
+        key={entry.id}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '12px',
+          marginBottom: '10px',
+          background: '#18233f',
+          borderRadius: '12px'
+        }}
+      >
+        <div>
+          <strong>{entry.ringNr}</strong>
+          <br />
+          {entry.count} Eier
+          <br />
+          <small>{entry.date}</small>
+        </div>
 
         <button
           onClick={() =>
@@ -586,7 +603,6 @@ return (
               eggEntries.filter((item) => item.id !== entry.id)
             )
           }
-          style={{ marginLeft: '12px' }}
         >
           Löschen
         </button>
