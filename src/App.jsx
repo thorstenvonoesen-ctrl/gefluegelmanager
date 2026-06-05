@@ -459,7 +459,7 @@ return (
         <div className="statIcon">🥚</div>
         <div>
           <span>Eier heute</span>
-          <strong>0</strong>
+          <strong>{eggEntries.reduce((sum, entry) => sum + entry.count, 0)}</strong>
           <small>frische Eier</small>
         </div>
       </article>
