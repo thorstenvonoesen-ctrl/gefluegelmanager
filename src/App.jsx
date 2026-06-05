@@ -226,7 +226,9 @@ async function saveEggEntry(event) {
     return;
   }
 
-  setEggForm(initialEggEntry);
+  setEggCount('');
+setSelectedAnimal('');
+await loadEggEntries();
   await loadEggEntries();
 }
 async function handleAuth() {
