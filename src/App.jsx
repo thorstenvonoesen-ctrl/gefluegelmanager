@@ -546,6 +546,8 @@ return (
 <input
   type="number"
   placeholder="Anzahl eingeben"
+  value={eggCount}
+  onChange={(event) => setEggCount(event.target.value)}
   style={{ width: '100%' }}
 />
   </article>
