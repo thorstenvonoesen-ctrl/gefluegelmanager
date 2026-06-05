@@ -255,19 +255,8 @@ console.log('SUPABASE DATA', data);
     setLoading(false);
   }
 }
-
-      setForm(initialAnimal);
-      setEditingId(null);
-      await loadAnimals();
-      setMessage('Tier gespeichert.');
-    } catch (error) {
-      setMessage(`Speichern fehlgeschlagen: ${error.message}`);
-    }
-
-    setLoading(false);
-}
-
-if (!user) {
+ 
+     if (!user) {
   return (
   <div className="appShell">
   <main className="main">
