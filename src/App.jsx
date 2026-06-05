@@ -334,6 +334,10 @@ return (
     await supabase.auth.signOut();
     setUser(null);
   }}
+<div style={{ marginBottom: '10px', fontSize: '14px' }}>
+  Angemeldet als:<br />
+  <strong>{user?.email}</strong>
+</div>
 >
   Abmelden
 </button>
