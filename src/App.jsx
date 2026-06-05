@@ -134,11 +134,17 @@ export default function App() {
 
   async function loadAnimals() {
     setLoading(true);
+const { data: sessionData } = await supabase.auth.getSession();
+const currentUser = sessionData.session?.user;
 
+if (!currentUser) {
+  setLoading(false);
+  return;
+}
     const { data, error } = await supabase
   .from('animals')
   .select('*')
-.eq('owner_id', user.id)
+.eq('owner_id', currentUser.id)
 .order('created_at', { ascending: false });
 
 console.log('SUPABASE DATA', data);
