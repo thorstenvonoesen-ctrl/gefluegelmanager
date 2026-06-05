@@ -5,8 +5,8 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background: #f3f4f6;
-  color: #111827;
+  background: #0f1724;
+  color: #ffffff;
 }
 
 .appShell {
@@ -16,9 +16,10 @@ body {
 
 .sidebar {
   width: 260px;
-  background: white;
-  border-right: 1px solid #e5e7eb;
+  background: #111827;
+  border-right: 1px solid #293548;
   padding: 24px;
+  color: #ffffff;
 }
 
 .brand {
@@ -377,4 +378,57 @@ body {
   .dashboardStats {
     grid-template-columns: 1fr;
   }
+}
+.main {
+  background: #0f1724;
+  color: #ffffff;
+}
+
+.dashboardHeader h1,
+.dashboardCard h2,
+.statCard strong {
+  color: #ffffff;
+}
+
+.dashboardHeader p,
+.dashboardCard p,
+.statCard span,
+.statCard small {
+  color: #a8b3c7;
+}
+
+.statCard,
+.dashboardCard,
+.card {
+  background: #1a2435;
+  border: 1px solid #293548;
+  color: #ffffff;
+}
+
+.statIcon {
+  background: rgba(124, 197, 110, 0.18);
+  color: #7cc56e;
+}
+
+.sidebar nav button {
+  background: #1a2435;
+  color: #ffffff;
+}
+
+.sidebar nav button.active {
+  background: linear-gradient(135deg, #5da853, #7cc56e);
+  color: #ffffff;
+}
+
+.sidebar nav button:hover {
+  background: #22304a;
+}
+
+.dashboardCard button {
+  background: linear-gradient(135deg, #5da853, #7cc56e);
+  color: #ffffff;
+}
+
+.dashboardCard button:hover {
+  background: #5da853;
 }
