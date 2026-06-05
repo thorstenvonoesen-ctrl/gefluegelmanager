@@ -393,7 +393,12 @@ return (
   >
     Tiere
   </button>
-
+<button
+  className={activePage === 'eierbuch' ? 'active' : ''}
+  onClick={() => setActivePage('eierbuch')}
+>
+  Eierbuch
+</button>
   <button>Impfungen</button>
   <button>Export</button>
   <button>Einstellungen</button>
