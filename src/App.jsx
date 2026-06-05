@@ -534,8 +534,11 @@ return (
 
   <input
     type="number"
-    placeholder="Anzahl eingeben"
-  />
+    <input
+  type="number"
+  placeholder="Anzahl eingeben"
+  style={{ width: '100%' }}
+/>
 </article>
   </section>
 )}
