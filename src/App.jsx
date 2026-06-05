@@ -620,7 +620,8 @@ return (
                 ))}
               </div>
             )}
-          </article>
+}
+</article>
         </section>
       </main>
     </div>
