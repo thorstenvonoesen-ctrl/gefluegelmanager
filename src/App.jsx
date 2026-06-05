@@ -317,7 +317,6 @@ console.log("USER ID:", sessionData.session.user.id);
   } finally {
     setLoading(false);
   }
-}
  
      if (!user) {
   return (
