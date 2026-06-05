@@ -532,14 +532,7 @@ return (
 
 <label>Anzahl Eier</label>
 
-  <input
-    type="number"
-    <input
-  type="number"
-  placeholder="Anzahl eingeben"
-  style={{ width: '100%' }}
-/>
-</article>
+  </article>
   </section>
 )}
  {activePage === 'impfungen' && (
