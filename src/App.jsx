@@ -223,7 +223,23 @@ async function saveEggEntry(event) {
   setEggForm(initialEggEntry);
   
 }
+async function handleAuth() {
+  setMessage('');
 
+  const result =
+    authMode === 'login'
+      ? await supabase.auth.signInWithPassword({ email, password })
+      : await supabase.auth.signUp({ email, password });
+
+  if (result.error) {
+    setMessage(result.error.message);
+    return;
+  }
+
+  setUser(result.data.user);
+  await loadAnimals();
+  await loadEggEntries();
+}
    async function handleForgotPassword() {
   if (!email) {
     setMessage('Bitte E-Mail eingeben.');
