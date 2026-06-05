@@ -486,7 +486,7 @@ return (
       <article className="dashboardCard">
         <h2>Eierbuch</h2>
         <p>Eier erfassen, Übersicht einsehen und Statistiken.</p>
-        <button>
+        <button onClick={() => setActivePage('eierbuch')}>
           Zum Eierbuch →
         </button>
       </article>
