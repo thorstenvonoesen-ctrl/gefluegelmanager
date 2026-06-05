@@ -115,6 +115,8 @@ export default function App() {
   const [form, setForm] = useState(initialAnimal);
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [eggEntries, setEggEntries] = useState([]);
+const [eggForm, setEggForm] = useState(initialEggEntry);
   const [message, setMessage] = useState('');
   const [user, setUser] = useState(null);
   const [authMode, setAuthMode] = useState('login');
