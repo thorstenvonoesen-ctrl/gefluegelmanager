@@ -236,3 +236,9 @@ body {
   background: #f2f2f2;
   color: #111827;
 }
+.photoStrip img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 16px;
+}
