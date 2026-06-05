@@ -399,7 +399,12 @@ return (
 >
   Eierbuch
 </button>
-  <button>Impfungen</button>
+  <button
+  className={activePage === 'impfungen' ? 'active' : ''}
+  onClick={() => setActivePage('impfungen')}
+>
+  Impfungen
+</button>
   <button>Export</button>
   <button>Einstellungen</button>
 </nav>
