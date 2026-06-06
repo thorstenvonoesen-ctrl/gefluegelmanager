@@ -1097,6 +1097,20 @@ return (
 <button onClick={saveHatching}>
   Brut speichern
 </button>
+      <div style={{ marginTop: '24px' }}>
+  {hatchings.length === 0 ? (
+    <p>Noch keine Bruten eingetragen.</p>
+  ) : (
+    hatchings.map((hatching) => (
+      <div key={hatching.id}>
+        <strong>{hatching.name}</strong><br />
+        Start: {new Date(hatching.start_date).toLocaleDateString('de-DE')}<br />
+        Eier: {hatching.egg_count}<br />
+        Methode: {hatching.method}
+      </div>
+    ))
+  )}
+</div>
     </article>
   </section>
 )}
