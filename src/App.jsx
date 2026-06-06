@@ -638,7 +638,7 @@ return (
 </small>
         </div>
 
-        <button
+ 
          <button onClick={() => deleteEggEntry(entry.id)}>
   Löschen
 </button>
