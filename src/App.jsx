@@ -258,7 +258,7 @@ await loadEggEntries();
   const { error } = await supabase
     .from('vaccinations')
     .insert({
-      owner_id: currentUser.id,
+    
       vaccine: vaccineName,
       vaccination_date: new Date().toISOString().slice(0, 10),
       notes: vaccineAnimal
