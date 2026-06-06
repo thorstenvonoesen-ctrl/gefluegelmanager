@@ -639,14 +639,9 @@ return (
         </div>
 
         <button
-          onClick={() =>
-            setEggEntries(
-              eggEntries.filter((item) => item.id !== entry.id)
-            )
-          }
-        >
-          Löschen
-        </button>
+         <button onClick={() => deleteEggEntry(entry.id)}>
+  Löschen
+</button>
       </div>
     ))}
   </div>
