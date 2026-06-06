@@ -493,3 +493,22 @@ body {
 .card button:hover {
   background: #5da853;
 }
+.animalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #111827;
+}
+
+.animalInfo strong {
+  color: #111827;
+  font-size: 18px;
+}
+
+.animalInfo span {
+  color: #374151;
+}
+
+.animalInfo small {
+  color: #6b7280;
+}
