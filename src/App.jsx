@@ -255,6 +255,8 @@ function getHatchingDay(startDate) {
 
   return diffDays + 1;
 }
+
+async function saveHatching() {
   setHatchings(data || []);
 }
   async function saveHatching() {
