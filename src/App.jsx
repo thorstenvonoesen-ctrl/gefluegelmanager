@@ -927,7 +927,7 @@ return (
                       <small>
   Status: {animal.status} ...
 </small>
-<div className="animalActions">
+
 <button
   onClick={() => {
     setForm(animal);
