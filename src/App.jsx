@@ -717,11 +717,19 @@ return (
         </div>
 
         <button
-          onClick={() =>
-            setVaccinations(
-              vaccinations.filter((item) => item.id !== entry.id)
-            )
-          }
+          onClick={async () => {
+  const { error } = await supabase
+    .from('vaccinations')
+    .delete()
+    .eq('id', entry.id)
+
+  if (error) {
+    setMessage(`Impfung löschen fehlgeschlagen: ${error.message}`)
+    return
+  }
+
+  await loadVaccinations()
+}}
         >
           Löschen
         </button>
