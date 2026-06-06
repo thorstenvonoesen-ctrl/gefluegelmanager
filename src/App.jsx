@@ -115,6 +115,7 @@ export default function App() {
   const [selectedAnimal, setSelectedAnimal] = useState('');
   const [eggCount, setEggCount] = useState('');
   const [vaccinations, setVaccinations] = useState([]);
+  const [hatchings, setHatchings] = useState([]);
 const [vaccineName, setVaccineName] = useState('');
 const [vaccineAnimal, setVaccineAnimal] = useState('');
   const [form, setForm] = useState(initialAnimal);
