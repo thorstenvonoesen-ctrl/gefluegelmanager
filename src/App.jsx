@@ -1060,7 +1060,43 @@ return (
   <section className="grid">
     <article className="card">
       <h2>Brutbuch</h2>
-      <p>Noch keine Bruten eingetragen.</p>
+      <input
+  type="text"
+  placeholder="Brutname"
+  value={hatchingName}
+  onChange={(e) => setHatchingName(e.target.value)}
+/>
+
+<input
+  type="date"
+  value={hatchingStartDate}
+  onChange={(e) => setHatchingStartDate(e.target.value)}
+/>
+
+<input
+  type="number"
+  placeholder="Anzahl Eier"
+  value={hatchingEggCount}
+  onChange={(e) => setHatchingEggCount(e.target.value)}
+/>
+
+<select
+  value={hatchingMethod}
+  onChange={(e) => setHatchingMethod(e.target.value)}
+>
+  <option>Brutmaschine</option>
+  <option>Glucke</option>
+</select>
+
+<textarea
+  placeholder="Notizen"
+  value={hatchingNotes}
+  onChange={(e) => setHatchingNotes(e.target.value)}
+/>
+
+<button onClick={saveHatching}>
+  Brut speichern
+</button>
     </article>
   </section>
 )}
