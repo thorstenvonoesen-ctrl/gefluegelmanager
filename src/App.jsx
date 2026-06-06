@@ -502,7 +502,9 @@ return (
 </nav>
         <div style={{ marginBottom: '10px', fontSize: '14px' }}>
   Angemeldet als:<br />
-  <strong>{user?.email}</strong>
+  <strong>
+  {user?.user_metadata?.firstName} {user?.user_metadata?.lastName}
+</strong>
 </div>
         <button
   onClick={async () => {
