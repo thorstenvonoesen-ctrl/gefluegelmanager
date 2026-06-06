@@ -1143,6 +1143,12 @@ return (
         <strong>{hatching.name}</strong><br />
         Start: {new Date(hatching.start_date).toLocaleDateString('de-DE')}<br />
         Bruttag: {getHatchingDay(hatching.start_date)} von 21<br />
+        {getHatchingHint(getHatchingDay(hatching.start_date)) && (
+  <>
+    Hinweis: {getHatchingHint(getHatchingDay(hatching.start_date))}
+    <br />
+  </>
+)}
         Eier: {hatching.egg_count}<br />
         Methode: {hatching.method}
         <br />
