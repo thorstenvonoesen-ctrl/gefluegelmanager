@@ -517,6 +517,12 @@ return (
 >
   Impfungen
 </button>
+<button
+  className={activePage === 'brutbuch' ? 'active' : ''}
+  onClick={() => setActivePage('brutbuch')}
+>
+  Brutbuch
+</button>
   <button>Export</button>
   <button>Einstellungen</button>
 </nav>
