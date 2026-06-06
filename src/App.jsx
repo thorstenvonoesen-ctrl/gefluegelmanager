@@ -956,7 +956,14 @@ return (
               </button>
             </form>
           </article>
-
+{activePage === 'brutbuch' && (
+  <section className="grid">
+    <article className="card">
+      <h2>Brutbuch</h2>
+      <p>Noch keine Bruten eingetragen.</p>
+    </article>
+  </section>
+)}
           <article className="card">
             <h2>Tierbestand</h2>
 
