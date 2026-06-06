@@ -212,7 +212,6 @@ async function loadVaccinations() {
   const { data, error } = await supabase
     .from('vaccinations')
     .select('*')
-    .eq('owner_id', currentUser.id)
     .order('vaccination_date', { ascending: false });
 
   if (error) {
