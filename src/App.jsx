@@ -712,7 +712,7 @@ return (
           {entry.vaccine}
           <br />
           <small>
-            {new Date(entry.date).toLocaleDateString('de-DE')}
+            {new Date(entry.vaccination_date).toLocaleDateString('de-DE')}
           </small>
         </div>
 
