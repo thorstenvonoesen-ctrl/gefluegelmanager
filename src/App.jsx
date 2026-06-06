@@ -263,7 +263,7 @@ await loadEggEntries();
       vaccination_date: new Date().toISOString().slice(0, 10),
       notes: vaccineAnimal
     });
-
+console.log('SAVE VACCINATION ERROR:', error);
   if (error) {
     setMessage(`Impfung speichern fehlgeschlagen: ${error.message}`);
     return;
