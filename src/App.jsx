@@ -290,6 +290,7 @@ await loadEggEntries();
   setUser(result.data.user);
   await loadAnimals();
   await loadEggEntries();
+    await loadVaccinations();
 }
    async function handleForgotPassword() {
   if (!email) {
