@@ -258,6 +258,12 @@ function getHatchingDay(startDate) {
   return diffDays + 1;
 }
 function getHatchingHint(day) {
+  function getHatchingStatus(day) {
+  if (day >= 22) return '⚫ Abgeschlossen';
+  if (day >= 21) return '🔵 Schlupf';
+  if (day >= 18) return '🟡 Umlegen';
+  return '🟢 Aktiv';
+}
   if (day === 7) return 'Schieren empfohlen';
   if (day === 18) return 'Umlegen empfohlen';
   if (day === 21) return 'Schlupftermin';
