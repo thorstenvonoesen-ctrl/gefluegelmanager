@@ -257,28 +257,25 @@ function getHatchingDay(startDate) {
 
   return diffDays + 1;
 }
-function getHatchingHint(day) {
+
+
   function getHatchingStatus(day) {
   if (day >= 22) return '⚫ Abgeschlossen';
   if (day >= 21) return '🔵 Schlupf';
   if (day >= 18) return '🟡 Umlegen';
   return '🟢 Aktiv';
 }
+
+function getHatchingHint(day) {
   if (day === 7) return 'Schieren empfohlen';
   if (day === 18) return 'Umlegen empfohlen';
   if (day === 21) return 'Schlupftermin';
   if (day > 21) return 'Schlupf prüfen';
   return '';
 }
-async function saveHatching() {
-  setHatchings(data || []);
-}
   async function saveHatching() {
   const { data: sessionData } = await supabase.auth.getSession();
-  const currentUser = sessionData.session?.user;
-
-  if (!currentUser) return;
-
+  
   const { error } = await supabase
     .from('hatchings')
     .insert({
