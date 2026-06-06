@@ -296,7 +296,16 @@ await loadVaccinations();
   const result =
     authMode === 'login'
       ? await supabase.auth.signInWithPassword({ email, password })
-      : await supabase.auth.signUp({ email, password });
+      : await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        firstName,
+        lastName
+      }
+    }
+  });
 
   if (result.error) {
     setMessage(result.error.message);
