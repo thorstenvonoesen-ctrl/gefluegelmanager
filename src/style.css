@@ -522,9 +522,10 @@ body {
 }
 .hatchingCard {
   margin-top: 14px;
+  margin-bottom: 14px;
   padding: 16px;
   border-radius: 16px;
-  background: #111827;
+  background: #0f172a;
   border: 1px solid #374151;
 }
 
