@@ -221,6 +221,21 @@ async function loadVaccinations() {
 
   setVaccinations(data || []);
 }
+  async function deleteEggEntry(id) {
+  const { error } = await supabase
+    .from('egg_entries')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    setMessage(`Löschen fehlgeschlagen: ${error.message}`);
+    return;
+  }
+
+  setEggEntries((prev) =>
+    prev.filter((entry) => entry.id !== id)
+  );
+}
 async function saveEggEntry(event) {
   event.preventDefault();
 
