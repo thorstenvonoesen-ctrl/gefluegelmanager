@@ -243,6 +243,8 @@ async function loadVaccinations() {
     setMessage(`Brutbuch laden fehlgeschlagen: ${error.message}`);
     return;
   }
+    setHatchings(data || []);
+}
 function getHatchingDay(startDate) {
   const start = new Date(startDate);
   const today = new Date();
