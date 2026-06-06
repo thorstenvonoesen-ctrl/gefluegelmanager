@@ -1147,6 +1147,7 @@ return (
   className="hatchingCard"
 >
         <strong>{hatching.name}</strong><br />
+        <strong>{getHatchingStatus(getHatchingDay(hatching.start_date))}</strong>
         Start: {new Date(hatching.start_date).toLocaleDateString('de-DE')}<br />
         Bruttag: {getHatchingDay(hatching.start_date)} von 21<br />
         {getHatchingHint(getHatchingDay(hatching.start_date)) && (
