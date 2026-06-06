@@ -270,7 +270,8 @@ await loadEggEntries();
   }
 
   setVaccineAnimal('');
-  setVaccineName('');
+setVaccineName('');
+await loadVaccinations();
   }
   async function handleAuth() {
 
