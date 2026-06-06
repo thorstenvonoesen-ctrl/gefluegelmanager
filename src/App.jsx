@@ -627,7 +627,9 @@ return (
         }}
       >
         <div>
-          <strong>{entry.ringNr}</strong>
+          <strong>
+  {animals.find(animal => animal.id === entry.animal_id)?.ringNr || "Unbekannt"}
+</strong>
           <br />
           {entry.count} Eier
           <br />
