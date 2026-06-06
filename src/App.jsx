@@ -20,8 +20,7 @@ const initialAnimal = {
 
 const initialEggEntry = {
   date: new Date().toISOString().slice(0, 10),
-  count: '',
-  notes: ''
+  count: ''
 };
 function toAnimalRow(form, imageUrls = []) {
   return {
