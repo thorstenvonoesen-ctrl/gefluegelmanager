@@ -223,6 +223,24 @@ async function loadVaccinations() {
 
   setVaccinations(data || []);
 }
+  async function loadHatchings() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
+
+  if (!currentUser) return;
+
+  const { data, error } = await supabase
+    .from('hatchings')
+    .select('*')
+    .order('start_date', { ascending: false });
+
+  if (error) {
+    setMessage(`Brutbuch laden fehlgeschlagen: ${error.message}`);
+    return;
+  }
+
+  setHatchings(data || []);
+}
   async function deleteEggEntry(id) {
   const { error } = await supabase
     .from('egg_entries')
