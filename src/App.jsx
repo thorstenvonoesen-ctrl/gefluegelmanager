@@ -414,7 +414,23 @@ if (!user) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+     {authMode === 'signup' && (
+  <>
+    <input
+      type="text"
+      placeholder="Vorname"
+      value={firstName}
+      onChange={(e) => setFirstName(e.target.value)}
+    />
 
+    <input
+      type="text"
+      placeholder="Nachname"
+      value={lastName}
+      onChange={(e) => setLastName(e.target.value)}
+    />
+  </>
+)}
       <input
         type="password"
         placeholder="Passwort"
