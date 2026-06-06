@@ -257,12 +257,12 @@ await loadEggEntries();
 
   const { error } = await supabase
     .from('vaccinations')
-    .insert({
-    
-      vaccine: vaccineName,
-      vaccination_date: new Date().toISOString().slice(0, 10),
-      notes: vaccineAnimal
-    });
+   .insert({
+  owner_id: currentUser.id,
+  vaccine: vaccineName,
+  vaccination_date: new Date().toISOString().slice(0, 10),
+  notes: vaccineAnimal
+});
 console.log('SAVE VACCINATION ERROR:', error);
   if (error) {
     setMessage(`Impfung speichern fehlgeschlagen: ${error.message}`);
