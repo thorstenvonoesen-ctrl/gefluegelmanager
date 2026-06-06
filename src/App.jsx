@@ -276,6 +276,19 @@ async function loadVaccinations() {
 
   await loadHatchings();
 }
+  async function deleteHatching(id) {
+  const { error } = await supabase
+    .from('hatchings')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  await loadHatchings();
+}
   async function deleteEggEntry(id) {
   const { error } = await supabase
     .from('egg_entries')
