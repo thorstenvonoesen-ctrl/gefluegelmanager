@@ -634,7 +634,7 @@ return (
           {entry.count} Eier
           <br />
           <small>
-  {new Date(entry.vaccination_date).toLocaleDateString('de-DE')}
+  {new Date(entry.date).toLocaleDateString('de-DE')}
 </small>
         </div>
 
