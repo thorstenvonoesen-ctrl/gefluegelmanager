@@ -707,7 +707,9 @@ return (
         }}
       >
         <div>
-          <strong>{entry.ringNr}</strong>
+          strong>
+  {animals.find((animal) => animal.id === entry.animal_id)?.ringNr || 'Tier unbekannt'}
+</strong>
           <br />
           {entry.vaccine}
           <br />
