@@ -259,9 +259,9 @@ await loadEggEntries();
     .from('vaccinations')
    .insert({
   owner_id: currentUser.id,
+  animal_id: vaccineAnimal,
   vaccine: vaccineName,
-  vaccination_date: new Date().toISOString().slice(0, 10),
-  notes: vaccineAnimal
+  vaccination_date: new Date().toISOString().slice(0, 10)
 });
 console.log('SAVE VACCINATION ERROR:', error);
   if (error) {
