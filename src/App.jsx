@@ -921,7 +921,7 @@ return (
                       )}
                     </div>
 
-                    <div>
+                    <div className="animalInfo">
                       <strong>{animal.ringNr || 'ohne Ringnummer'}</strong>
                       <span>{animal.art} · {animal.rasse || 'keine Rasse'} · {animal.geschlecht}</span>
                       <small>
