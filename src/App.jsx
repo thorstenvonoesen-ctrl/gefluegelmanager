@@ -235,7 +235,7 @@ async function saveEggEntry(event) {
   owner_id: currentUser.id,
   date: new Date().toISOString().slice(0, 10),
   count: Number(eggCount),
-  notes: selectedAnimal
+  animal_id: selectedAnimal
 });
 
   if (error) {
