@@ -116,6 +116,11 @@ export default function App() {
   const [eggCount, setEggCount] = useState('');
   const [vaccinations, setVaccinations] = useState([]);
   const [hatchings, setHatchings] = useState([]);
+  const [hatchingName, setHatchingName] = useState('');
+const [hatchingStartDate, setHatchingStartDate] = useState(new Date().toISOString().slice(0, 10));
+const [hatchingEggCount, setHatchingEggCount] = useState('');
+const [hatchingMethod, setHatchingMethod] = useState('Brutmaschine');
+const [hatchingNotes, setHatchingNotes] = useState('');
 const [vaccineName, setVaccineName] = useState('');
 const [vaccineAnimal, setVaccineAnimal] = useState('');
   const [form, setForm] = useState(initialAnimal);
