@@ -246,6 +246,36 @@ async function loadVaccinations() {
 
   setHatchings(data || []);
 }
+  async function saveHatching() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
+
+  if (!currentUser) return;
+
+  const { error } = await supabase
+    .from('hatchings')
+    .insert({
+      owner_id: currentUser.id,
+      name: hatchingName,
+      start_date: hatchingStartDate,
+      egg_count: Number(hatchingEggCount),
+      method: hatchingMethod,
+      notes: hatchingNotes,
+      status: 'Aktiv'
+    });
+
+  if (error) {
+    setMessage(`Brut speichern fehlgeschlagen: ${error.message}`);
+    return;
+  }
+
+  setHatchingName('');
+  setHatchingEggCount('');
+  setHatchingMethod('Brutmaschine');
+  setHatchingNotes('');
+
+  await loadHatchings();
+}
   async function deleteEggEntry(id) {
   const { error } = await supabase
     .from('egg_entries')
