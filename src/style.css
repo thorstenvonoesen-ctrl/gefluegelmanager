@@ -157,11 +157,11 @@ body {
 }
 .animalRow {
   display: grid;
-  grid-template-columns: 70px 1fr auto;
+  grid-template-columns: 90px 1fr 220px;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 
-  padding: 16px;
+  padding: 14px 18px;
   border-radius: 18px;
 
   background: #ffffff;
@@ -178,7 +178,15 @@ body {
   cursor: pointer;
   font-weight: 700;
 }
+.animalActions {
+  display: flex;
+  gap: 10px;
+}
 
+.animalRow button {
+  margin: 0;
+  padding: 10px 14px;
+}
 .animalRow button:first-of-type {
   background: #b93a2e;
   color: white;
