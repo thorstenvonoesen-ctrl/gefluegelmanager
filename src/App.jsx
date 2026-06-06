@@ -1115,7 +1115,10 @@ return (
     <p>Noch keine Bruten eingetragen.</p>
   ) : (
     hatchings.map((hatching) => (
-      <div key={hatching.id}>
+      <div
+  key={hatching.id}
+  className="hatchingCard"
+>
         <strong>{hatching.name}</strong><br />
         Start: {new Date(hatching.start_date).toLocaleDateString('de-DE')}<br />
         Eier: {hatching.egg_count}<br />
