@@ -335,6 +335,7 @@ await loadVaccinations();
   await loadAnimals();
   await loadEggEntries();
     await loadVaccinations();
+    await loadHatchings();
 }
    async function handleForgotPassword() {
   if (!email) {
