@@ -254,7 +254,7 @@ await loadEggEntries();
 
   setVaccineAnimal('');
   setVaccineName('');
-  {
+  }
   async function handleAuth() {
 
   setMessage('');
