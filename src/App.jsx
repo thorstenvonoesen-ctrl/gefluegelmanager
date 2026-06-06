@@ -1123,6 +1123,16 @@ return (
         Start: {new Date(hatching.start_date).toLocaleDateString('de-DE')}<br />
         Eier: {hatching.egg_count}<br />
         Methode: {hatching.method}
+        <br />
+<button
+  onClick={() => {
+    if (confirm('Brut wirklich löschen?')) {
+      deleteHatching(hatching.id);
+    }
+  }}
+>
+  Löschen
+</button>
       </div>
     ))
   )}
