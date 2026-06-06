@@ -669,7 +669,7 @@ return (
   <option value="">Tier wählen</option>
 
   {animals.map((animal) => (
-    <option key={animal.id} value={animal.ringNr}>
+    <option key={animal.id} value={animal.id}>
       {animal.ringNr}
     </option>
   ))}
