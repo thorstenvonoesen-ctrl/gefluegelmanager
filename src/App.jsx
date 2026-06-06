@@ -203,7 +203,25 @@ console.log('SUPABASE DATA', data);
 
   setEggEntries(data || []);
 }
+async function loadVaccinations() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
 
+  if (!currentUser) return;
+
+  const { data, error } = await supabase
+    .from('vaccinations')
+    .select('*')
+    .eq('owner_id', currentUser.id)
+    .order('vaccination_date', { ascending: false });
+
+  if (error) {
+    setMessage(`Impfungen laden fehlgeschlagen: ${error.message}`);
+    return;
+  }
+
+  setVaccinations(data || []);
+}
 async function saveEggEntry(event) {
   event.preventDefault();
 
