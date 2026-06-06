@@ -257,7 +257,13 @@ function getHatchingDay(startDate) {
 
   return diffDays + 1;
 }
-
+function getHatchingHint(day) {
+  if (day === 7) return 'Schieren empfohlen';
+  if (day === 18) return 'Umlegen empfohlen';
+  if (day === 21) return 'Schlupftermin';
+  if (day > 21) return 'Schlupf prüfen';
+  return '';
+}
 async function saveHatching() {
   setHatchings(data || []);
 }
