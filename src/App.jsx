@@ -229,9 +229,34 @@ async function saveEggEntry(event) {
   setEggCount('');
 setSelectedAnimal('');
 await loadEggEntries();
-  await loadEggEntries();
 }
-async function handleAuth() {
+  async function saveVaccination(event) {
+  event.preventDefault();
+
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
+
+  if (!currentUser) return;
+
+  const { error } = await supabase
+    .from('vaccinations')
+    .insert({
+      owner_id: currentUser.id,
+      vaccine: vaccineName,
+      vaccination_date: new Date().toISOString().slice(0, 10),
+      notes: vaccineAnimal
+    });
+
+  if (error) {
+    setMessage(`Impfung speichern fehlgeschlagen: ${error.message}`);
+    return;
+  }
+
+  setVaccineAnimal('');
+  setVaccineName('');
+  {
+  async function handleAuth() {
+
   setMessage('');
 
   const result =
