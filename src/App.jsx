@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+export function exportToCsv(filename, rows) {
 import { supabase } from './supabase.js';
 import { exportToCsv } from './utils/exportCsv';
 
