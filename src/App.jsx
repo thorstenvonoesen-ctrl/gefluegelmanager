@@ -632,7 +632,12 @@ return (
 >
   Brutbuch
 </button>
-  <button>Export</button>
+  <button
+  className={activePage === 'export' ? 'active' : ''}
+  onClick={() => setActivePage('export')}
+>
+  Export
+</button>
   <button>Einstellungen</button>
 </nav>
         <div style={{ marginBottom: '10px', fontSize: '14px' }}>
