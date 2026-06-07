@@ -308,11 +308,6 @@ function getHatchingHint(day) {
     setMessage(`Brut speichern fehlgeschlagen: ${error.message}`);
     return;
   }
-
-  setHatchingName('');
-  setHatchingEggCount('');
-  setHatchingMethod('Brutmaschine');
-  setHatchingNotes('');
 await supabase
   .from('activities')
   .insert({
@@ -320,6 +315,11 @@ await supabase
     type: 'hatching',
     message: `🐣 Brut "${hatchingName}" gestartet`
   });
+  setHatchingName('');
+  setHatchingEggCount('');
+  setHatchingMethod('Brutmaschine');
+  setHatchingNotes('');
+
   await loadHatchings();
 }
   async function deleteHatching(id) {
@@ -334,6 +334,7 @@ await supabase
   }
 
   await loadHatchings();
+await loadActivities();
 }
   async function deleteEggEntry(id) {
   const { error } = await supabase
