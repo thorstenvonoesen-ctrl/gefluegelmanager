@@ -1276,10 +1276,11 @@ return (
     <button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
       CSV Export
     </button>
-  </div>
+ 
 <button onClick={() => exportHatchingsPdf(hatchings)}>
   PDF Export
 </button>
+  
 </div>
 </article>
 </section>
