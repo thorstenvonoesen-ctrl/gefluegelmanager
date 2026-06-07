@@ -1280,7 +1280,7 @@ return (
 <button onClick={() => exportHatchingsPdf(hatchings)}>
   PDF Export
 </button>
-  
+  </div>
 </div>
 </article>
 </section>
