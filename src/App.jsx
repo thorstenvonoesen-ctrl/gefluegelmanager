@@ -412,8 +412,7 @@ await loadVaccinations();
   const { data } = await supabase
     .from('activities')
     .select('*')
-    .eq('owner_id', currentUser.id)
-    .order('created_at', { ascending: false })
+        .order('created_at', { ascending: false })
     .limit(10);
 
   setActivities(data || []);
