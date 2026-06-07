@@ -1224,6 +1224,17 @@ return (
     </article>
   </section>
 )}
+        {activePage === 'export' && (
+  <section className="grid">
+    <article className="card">
+      <h2>Export</h2>
+
+      <button onClick={() => exportToCsv('tierbestand.csv', animals)}>
+        Tierbestand als CSV exportieren
+      </button>
+    </article>
+  </section>
+)}
         </main>
     </div>
   );
