@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from './supabase.js';
 import { exportToCsv } from './utils/exportCsv';
-import { exportAnimalsPdf } from './utils/exportPdf';
+import {
+  exportAnimalsPdf,
+  exportEggsPdf,
+  exportVaccinationsPdf,
+  exportHatchingsPdf
+} from './utils/exportPdf';
 const initialAnimal = {
   ringNr: '',
   art: 'Huhn',
