@@ -1232,6 +1232,17 @@ return (
       <button onClick={() => exportToCsv('tierbestand.csv', animals)}>
         Tierbestand als CSV exportieren
       </button>
+      <button onClick={() => exportToCsv('eierbuch.csv', eggEntries)}>
+  Eierbuch als CSV exportieren
+</button>
+
+<button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
+  Impfungen als CSV exportieren
+</button>
+
+<button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
+  Brutbuch als CSV exportieren
+</button>
     </article>
   </section>
 )}
