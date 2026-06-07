@@ -1261,11 +1261,12 @@ return (
 
   <div className="exportCard">
     <h3>💉 Impfungen</h3>
+<button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
+  CSV Export
+</button>
+
 <button onClick={() => exportVaccinationsPdf(vaccinations)}>
   PDF Export
-</button>
-    <button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
-  CSV Export
 </button>
   </div>
 
