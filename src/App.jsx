@@ -1243,6 +1243,9 @@ return (
 <button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
   Brutbuch als CSV exportieren
 </button>
+      <button onClick={() => exportAnimalsPdf(animals)}>
+  Tierbestand als PDF exportieren
+</button>
     </article>
   </section>
 )}
