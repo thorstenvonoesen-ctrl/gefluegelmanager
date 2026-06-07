@@ -1254,17 +1254,25 @@ return (
     <button onClick={() => exportToCsv('eierbuch.csv', eggEntries)}>
       CSV Export
     </button>
+    <button onClick={() => exportEggsPdf(eggEntries)}>
+  PDF Export
+</button>
   </div>
 
   <div className="exportCard">
     <h3>💉 Impfungen</h3>
-
+<button onClick={() => exportVaccinationsPdf(vaccinations)}>
+  PDF Export
+</button>
     <button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
       CSV Export
     </button>
   </div>
 
   <div className="exportCard">
+    <button onClick={() => exportHatchingsPdf(hatchings)}>
+  PDF Export
+</button>
     <h3>🐣 Brutbuch</h3>
 
     <button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
