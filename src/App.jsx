@@ -1268,6 +1268,9 @@ return (
   </div>
 
 </div>
+      </article>
+</section>
+)}
   );
 }
 
