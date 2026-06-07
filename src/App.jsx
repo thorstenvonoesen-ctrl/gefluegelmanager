@@ -116,6 +116,7 @@ export default function App() {
   const [eggCount, setEggCount] = useState('');
   const [vaccinations, setVaccinations] = useState([]);
   const [hatchings, setHatchings] = useState([]);
+  const [activities, setActivities] = useState([]);
   const [hatchingName, setHatchingName] = useState('');
 const [hatchingStartDate, setHatchingStartDate] = useState(new Date().toISOString().slice(0, 10));
 const [hatchingEggCount, setHatchingEggCount] = useState('');
