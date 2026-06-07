@@ -667,9 +667,10 @@ return (
     <section className="dashboardGrid">
       <article className="dashboardCard">
         <h2>Letzte Aktivitäten</h2>
-        <p>Neues Tier hinzugefügt</p>
-        <p>Eierbuch vorbereitet</p>
-        <p>Tierverwaltung aktualisiert</p>
+        <p>🐔 Tiere gesamt: {animalCount}</p>
+<p>🥚 Eierbucheinträge: {eggEntries.length}</p>
+<p>🐣 Aktive Bruten: {hatchings.length}</p>
+<p>💉 Impfungen: {vaccinations.length}</p>
       </article>
 
       <article className="dashboardCard">
