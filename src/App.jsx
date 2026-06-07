@@ -1270,16 +1270,16 @@ return (
   </div>
 
   <div className="exportCard">
-    <button onClick={() => exportHatchingsPdf(hatchings)}>
-  PDF Export
-</button>
+    
     <h3>🐣 Brutbuch</h3>
 
     <button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
       CSV Export
     </button>
   </div>
-
+<button onClick={() => exportHatchingsPdf(hatchings)}>
+  PDF Export
+</button>
 </div>
 </article>
 </section>
