@@ -1265,8 +1265,8 @@ return (
   PDF Export
 </button>
     <button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
-      CSV Export    <h3>💉 Impfungen</h3>
-
+  CSV Export
+</button>
   </div>
 
   <div className="exportCard">
