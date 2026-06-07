@@ -402,6 +402,21 @@ console.log('SAVE VACCINATION ERROR:', error);
 setVaccineName('');
 await loadVaccinations();
   }
+  async function loadActivities() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const currentUser = sessionData.session?.user;
+
+  if (!currentUser) return;
+
+  const { data } = await supabase
+    .from('activities')
+    .select('*')
+    .eq('owner_id', currentUser.id)
+    .order('created_at', { ascending: false })
+    .limit(10);
+
+  setActivities(data || []);
+}
   async function handleAuth() {
 
   setMessage('');
