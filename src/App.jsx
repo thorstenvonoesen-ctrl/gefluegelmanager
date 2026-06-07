@@ -229,14 +229,17 @@ async function loadVaccinations() {
 
   setVaccinations(data || []);
 }
-  async function loadHatchings() {
-    async function loadActivities() {
-  const { data: sessionData } = await supabase.auth.getSession();
-  const currentUser = sessionData.session?.user;
+  async function loadActivities() {
+  const { data } = await supabase
+    .from('activities')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(10);
 
-  if (!currentUser) return;
+  setActivities(data || []);
+}
 
-  
+async function loadHatchings() {
   const { data: sessionData } = await supabase.auth.getSession();
   const currentUser = sessionData.session?.user;
 
@@ -251,8 +254,10 @@ async function loadVaccinations() {
     setMessage(`Brutbuch laden fehlgeschlagen: ${error.message}`);
     return;
   }
-    setHatchings(data || []);
+
+  setHatchings(data || []);
 }
+    
 function getHatchingDay(startDate) {
   const start = new Date(startDate);
   const today = new Date();
