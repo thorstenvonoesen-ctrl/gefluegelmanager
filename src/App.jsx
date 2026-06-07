@@ -1072,6 +1072,12 @@ return (
 
           <article className="card">
             <h2>Tierbestand</h2>
+            <button
+  onClick={() => exportToCsv('tierbestand.csv', animals)}
+  style={{ marginBottom: '15px' }}
+>
+  CSV exportieren
+</button>
 
             {animals.length === 0 ? (
               <p>Noch keine Tiere vorhanden.</p>
