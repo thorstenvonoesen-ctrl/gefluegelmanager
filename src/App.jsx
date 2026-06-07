@@ -1268,9 +1268,12 @@ return (
   </div>
 
 </div>
-      </article>
+</article>
 </section>
 )}
-  );
+
+</main>
+</div>
+);
 }
 
