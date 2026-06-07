@@ -288,7 +288,8 @@ function getHatchingHint(day) {
 }
   async function saveHatching() {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+  const currentUser = sessionData.session?.user;
+if (!currentUser) return;
   const { error } = await supabase
     .from('hatchings')
     .insert({
@@ -308,7 +309,7 @@ function getHatchingHint(day) {
 await supabase
   .from('activities')
   .insert({
-    owner_id: currentUser.id,
+    owner_id: currentUser?.id,
     type: 'hatching',
     message: `🐣 Brut "${hatchingName}" gestartet`
   });
