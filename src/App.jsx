@@ -690,10 +690,13 @@ return (
     <section className="dashboardGrid">
       <article className="dashboardCard">
         <h2>Letzte Aktivitäten</h2>
-        <p>🐔 Tiere gesamt: {animalCount}</p>
-<p>🥚 Eierbucheinträge: {eggEntries.length}</p>
-<p>🐣 Aktive Bruten: {hatchings.length}</p>
-<p>💉 Impfungen: {vaccinations.length}</p>
+        {activities.length === 0 ? (
+  <p>Noch keine Aktivitäten vorhanden.</p>
+) : (
+  activities.map((activity) => (
+    <p key={activity.id}>{activity.message}</p>
+  ))
+)}
       </article>
 
       <article className="dashboardCard">
