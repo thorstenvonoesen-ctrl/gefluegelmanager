@@ -297,7 +297,13 @@ function getHatchingHint(day) {
   setHatchingEggCount('');
   setHatchingMethod('Brutmaschine');
   setHatchingNotes('');
-
+await supabase
+  .from('activities')
+  .insert({
+    owner_id: currentUser.id,
+    type: 'hatching',
+    message: `🐣 Brut "${hatchingName}" gestartet`
+  });
   await loadHatchings();
 }
   async function deleteHatching(id) {
