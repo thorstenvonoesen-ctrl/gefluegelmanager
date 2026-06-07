@@ -1229,28 +1229,45 @@ return (
     <article className="card">
       <h2>Export</h2>
 
-      <button onClick={() => exportToCsv('tierbestand.csv', animals)}>
-        Tierbestand als CSV exportieren
-      </button>
-      <button onClick={() => exportToCsv('eierbuch.csv', eggEntries)}>
-  Eierbuch als CSV exportieren
-</button>
+<div className="exportGrid">
 
-<button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
-  Impfungen als CSV exportieren
-</button>
+  <div className="exportCard">
+    <h3>🐔 Tierbestand</h3>
 
-<button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
-  Brutbuch als CSV exportieren
-</button>
-      <button onClick={() => exportAnimalsPdf(animals)}>
-  Tierbestand als PDF exportieren
-</button>
-    </article>
-  </section>
-)}
-        </main>
-    </div>
+    <button onClick={() => exportToCsv('tierbestand.csv', animals)}>
+      CSV Export
+    </button>
+
+    <button onClick={() => exportAnimalsPdf(animals)}>
+      PDF Export
+    </button>
+  </div>
+
+  <div className="exportCard">
+    <h3>🥚 Eierbuch</h3>
+
+    <button onClick={() => exportToCsv('eierbuch.csv', eggEntries)}>
+      CSV Export
+    </button>
+  </div>
+
+  <div className="exportCard">
+    <h3>💉 Impfungen</h3>
+
+    <button onClick={() => exportToCsv('impfungen.csv', vaccinations)}>
+      CSV Export
+    </button>
+  </div>
+
+  <div className="exportCard">
+    <h3>🐣 Brutbuch</h3>
+
+    <button onClick={() => exportToCsv('brutbuch.csv', hatchings)}>
+      CSV Export
+    </button>
+  </div>
+
+</div>
   );
 }
 
