@@ -430,6 +430,7 @@ await loadVaccinations();
   await loadEggEntries();
     await loadVaccinations();
     await loadHatchings();
+    await loadActivities();
 }
    async function handleForgotPassword() {
   if (!email) {
