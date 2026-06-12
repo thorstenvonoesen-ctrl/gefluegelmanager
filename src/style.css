@@ -538,3 +538,39 @@ body {
 .hatchingCard button {
   margin-top: 12px;
 }
+.eggStatsBox {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.eggStatsBox div {
+  display: flex;
+  flex-direction: column;
+}
+
+.eggStatsBox span {
+  color: #aab3c5;
+  font-size: 14px;
+}
+
+.eggStatsBox strong {
+  font-size: 32px;
+  color: white;
+}
+
+.eggTrend {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eggTrend strong {
+  font-size: 28px;
+  color: #9ccc65;
+}
+
+.eggTrend span {
+  color: #aab3c5;
+}
