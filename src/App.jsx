@@ -769,13 +769,25 @@ return (
 
       <article className="dashboardCard">
         <h2>Eierstatistik</h2>
-        <p>Diese Woche: {eggsThisWeek}</p>
-<p>Letzte Woche: {eggsLastWeek}</p>
-<p>
-  {eggDifference >= 0
-    ? `📈 +${eggDifference} Eier`
-    : `📉 ${eggDifference} Eier`}
-</p>
+        <div className="eggStatsBox">
+  <div>
+    <span>Diese Woche</span>
+    <strong>{eggsThisWeek}</strong>
+  </div>
+
+  <div>
+    <span>Letzte Woche</span>
+    <strong>{eggsLastWeek}</strong>
+  </div>
+</div>
+
+<div className="eggTrend">
+  {eggDifference >= 0 ? '📈' : '📉'}
+  <strong>
+    {eggDifference >= 0 ? `+${eggDifference}` : eggDifference}
+  </strong>
+  <span>Eier zur Vorwoche</span>
+</div>
       </article>
 
       <article className="dashboardCard">
