@@ -891,6 +891,15 @@ return (
     </option>
   ))}
 </select>
+      vaccineName === 'Sonstiges' && (
+  <input
+    type="text"
+    placeholder="Eigene Impfung eingeben"
+    value={customVaccine}
+    onChange={(event) => setCustomVaccine(event.target.value)}
+    style={{ width: '100%' }}
+  />
+)}
      <button onClick={(event) => saveVaccination(event)}>
   Impfung speichern
 </button>
