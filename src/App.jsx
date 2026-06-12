@@ -129,6 +129,7 @@ const [hatchingEggCount, setHatchingEggCount] = useState('');
 const [hatchingMethod, setHatchingMethod] = useState('Brutmaschine');
 const [hatchingNotes, setHatchingNotes] = useState('');
 const [vaccineName, setVaccineName] = useState('');
+  const [customVaccine, setCustomVaccine] = useState('');
   const vaccineOptions = [
   'Newcastle',
   'Marek',
