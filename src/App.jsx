@@ -891,7 +891,7 @@ return (
     </option>
   ))}
 </select>
-      vaccineName === 'Sonstiges' && (
+  {vaccineName === 'Sonstiges' && (
   <input
     type="text"
     placeholder="Eigene Impfung eingeben"
