@@ -193,6 +193,7 @@ const eggTotal = useMemo(() => {
     })
     .reduce((sum, entry) => sum + Number(entry.count || 0), 0);
 }, [eggEntries]);
+  const eggDifference = eggsThisWeek - eggsLastWeek;
   useEffect(() => {
     loadAnimals();
   }, []);
