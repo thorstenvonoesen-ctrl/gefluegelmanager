@@ -877,13 +877,18 @@ return (
 
 <label>Impfung / Behandlung</label>
 
-<input
-  type="text"
-  placeholder="z. B. Newcastle, Milbenbehandlung"
+<select
   value={vaccineName}
   onChange={(event) => setVaccineName(event.target.value)}
   style={{ width: '100%' }}
-/>
+>
+  <option value="">Impfung auswählen</option>
+  {vaccineOptions.map((vaccine) => (
+    <option key={vaccine} value={vaccine}>
+      {vaccine}
+    </option>
+  ))}
+</select>
      <button onClick={(event) => saveVaccination(event)}>
   Impfung speichern
 </button>
