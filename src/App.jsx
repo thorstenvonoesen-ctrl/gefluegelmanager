@@ -129,6 +129,17 @@ const [hatchingEggCount, setHatchingEggCount] = useState('');
 const [hatchingMethod, setHatchingMethod] = useState('Brutmaschine');
 const [hatchingNotes, setHatchingNotes] = useState('');
 const [vaccineName, setVaccineName] = useState('');
+  const vaccineOptions = [
+  'Newcastle',
+  'Marek',
+  'IB',
+  'ILT',
+  'Kokzidiose',
+  'Salmonellen',
+  'Milbenbehandlung',
+  'Wurmkur',
+  'Sonstiges'
+];
 const [vaccineAnimal, setVaccineAnimal] = useState('');
   const [form, setForm] = useState(initialAnimal);
   const [editingId, setEditingId] = useState(null);
