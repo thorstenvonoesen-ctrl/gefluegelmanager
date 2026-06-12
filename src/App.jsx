@@ -769,7 +769,13 @@ return (
 
       <article className="dashboardCard">
         <h2>Eierstatistik</h2>
-        <p>Die Eierstatistik wird später eingebaut.</p>
+        <p>Diese Woche: {eggsThisWeek}</p>
+<p>Letzte Woche: {eggsLastWeek}</p>
+<p>
+  {eggDifference >= 0
+    ? `📈 +${eggDifference} Eier`
+    : `📉 ${eggDifference} Eier`}
+</p>
       </article>
 
       <article className="dashboardCard">
