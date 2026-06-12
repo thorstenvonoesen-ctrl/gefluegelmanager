@@ -173,6 +173,26 @@ const eggTotal = useMemo(() => {
     .filter(entry => new Date(entry.date) >= weekAgo)
     .reduce((sum, entry) => sum + Number(entry.count || 0), 0);
 }, [eggEntries]);
+  const eggsLastWeek = useMemo(() => {
+  const today = new Date();
+
+  const weekAgo = new Date();
+  weekAgo.setDate(today.getDate() - 7);
+
+  const twoWeeksAgo = new Date();
+  twoWeeksAgo.setDate(today.getDate() - 14);
+
+  return eggEntries
+    .filter(entry => {
+      const entryDate = new Date(entry.date);
+
+      return (
+        entryDate >= twoWeeksAgo &&
+        entryDate < weekAgo
+      );
+    })
+    .reduce((sum, entry) => sum + Number(entry.count || 0), 0);
+}, [eggEntries]);
   useEffect(() => {
     loadAnimals();
   }, []);
