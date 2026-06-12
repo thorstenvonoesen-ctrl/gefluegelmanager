@@ -417,6 +417,7 @@ console.log('SAVE VACCINATION ERROR:', error);
 
   setVaccineAnimal('');
 setVaccineName('');
+    setCustomVaccine('');
 await loadVaccinations();
   }
   async function loadActivities() {
