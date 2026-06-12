@@ -163,6 +163,16 @@ const [lastName, setLastName] = useState('');
 const eggTotal = useMemo(() => {
   return eggEntries.reduce((sum, entry) => sum + Number(entry.count || 0), 0);
 }, [eggEntries]);
+  const eggsThisWeek = useMemo(() => {
+  const today = new Date();
+  const weekAgo = new Date();
+
+  weekAgo.setDate(today.getDate() - 7);
+
+  return eggEntries
+    .filter(entry => new Date(entry.date) >= weekAgo)
+    .reduce((sum, entry) => sum + Number(entry.count || 0), 0);
+}, [eggEntries]);
   useEffect(() => {
     loadAnimals();
   }, []);
